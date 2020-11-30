@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2779AF</color>
+    <color name="colorPrimaryDark">#2874A6</color>
+    <color name="colorAccent">#2874A6</color>
+
+    <color name="gColor">#21357B</color>
+    <color name="noteColor">#255077</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="page_bg">#ffffff</color>
+    <color name="light_blue">#80255077</color>
+    <color name="closeWhite">#DAD5D5</color>
+    <color name="opacityBlue">#1A2874A6</color>
+    <color name="viewBg">#BFC1CF</color>
+</resources>

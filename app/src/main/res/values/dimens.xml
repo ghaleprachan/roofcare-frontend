@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="anim_loading_margin">500dp</dimen>
+    <dimen name="notes_description_top">2dp</dimen>
+    <dimen name="more_profile_img">50dp</dimen>
+</resources>
