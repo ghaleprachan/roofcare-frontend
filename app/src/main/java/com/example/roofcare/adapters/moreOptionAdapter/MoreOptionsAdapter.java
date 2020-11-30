@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
+import com.example.roofcare.enumClasses.MoreOptionsId;
 import com.example.roofcare.models.MoreOptionsModel;
 
 import java.util.ArrayList;
@@ -39,6 +40,15 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
         holder.icon.setImageResource(moreOptions.get(position).getIcon());
         holder.title.setText(moreOptions.get(position).getName());
         onParentClick(holder.parent, position);
+        setMoreVisible(holder.more, position);
+    }
+
+    private void setMoreVisible(ImageView more, int position) {
+        if (moreOptions.get(position).getId() == MoreOptionsId.SETTINGS) {
+            more.setVisibility(View.VISIBLE);
+        } else {
+            more.setVisibility(View.GONE);
+        }
     }
 
     private void onParentClick(LinearLayout parent, int position) {
@@ -53,7 +63,7 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView icon;
+        private ImageView icon, more;
         private LinearLayout parent;
         private TextView title;
 
@@ -66,6 +76,7 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
             icon = itemView.findViewById(R.id.icon);
             parent = itemView.findViewById(R.id.parent);
             title = itemView.findViewById(R.id.title);
+            more = itemView.findViewById(R.id.more);
         }
     }
 }
