@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
-import com.example.roofcare.activities.services.MoreOptionsService;
-import com.example.roofcare.adapters.MoreOptionsAdapter;
-import com.example.roofcare.helper.PopulateMoreOptions;
+import com.example.roofcare.services.moreOptionService.MoreOptionsService;
+import com.example.roofcare.adapters.moreOptionAdapter.MoreOptionsAdapter;
+import com.example.roofcare.helper.populateMoreSection.PopulateMoreOptions;
 
 
 public class MoreFragment extends Fragment {
@@ -36,12 +36,7 @@ public class MoreFragment extends Fragment {
     }
 
     private void addDataToRecyclerView() {
-        moreOptionsRecycler.setLayoutManager(new LinearLayoutManager(getContext()) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
+        moreOptionsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         MoreOptionsAdapter optionsAdapter = new MoreOptionsAdapter(getContext(), MoreOptionsService.options);
         moreOptionsRecycler.setAdapter(optionsAdapter);
     }

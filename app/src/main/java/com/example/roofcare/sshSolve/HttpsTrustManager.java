@@ -1,4 +1,4 @@
-package com.example.sajilothree.SSHSolve;
+package com.example.roofcare.sshSolve;
 
 import android.annotation.SuppressLint;
 
@@ -20,23 +20,14 @@ public class HttpsTrustManager implements X509TrustManager {
     @SuppressLint("TrustAllX509TrustManager")
     @Override
     public void checkClientTrusted(
-            java.security.cert.X509Certificate[] x509Certificates, String s) {
-
+            X509Certificate[] x509Certificates, String s) {
     }
 
     @SuppressLint("TrustAllX509TrustManager")
     @Override
     public void checkServerTrusted(
-            java.security.cert.X509Certificate[] x509Certificates, String s) {
+            X509Certificate[] x509Certificates, String s) {
 
-    }
-
-    public boolean isClientTrusted(X509Certificate[] chain) {
-        return true;
-    }
-
-    public boolean isServerTrusted(X509Certificate[] chain) {
-        return true;
     }
 
     @Override
@@ -61,8 +52,8 @@ public class HttpsTrustManager implements X509TrustManager {
             e.printStackTrace();
         }
 
-        HttpsURLConnection.setDefaultSSLSocketFactory(context
-                .getSocketFactory());
+        assert context != null;
+        HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
     }
 
 }

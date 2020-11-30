@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-</selector>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="@dimen/anim_loading_margin"
+        android:left="@dimen/anim_loading_margin"
+        android:right="@dimen/anim_loading_margin"
+        android:top="@dimen/anim_loading_margin">
+        <animated-rotate
+            android:drawable="@drawable/loading_image"
+            android:pivotX="50%"
+            android:pivotY="50%" />
+    </item>
+</layer-list>

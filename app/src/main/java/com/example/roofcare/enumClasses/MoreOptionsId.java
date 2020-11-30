@@ -5,5 +5,8 @@ public enum MoreOptionsId {
     BOOKING_REQUESTS,
     BOOKING_HISTORY,
     SETTINGS,
-    SAVED
+    SAVED,
+    FAVORITES,
+    SWITCH_ACCOUNT,
+    SIGN_OUT
 }

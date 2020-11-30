@@ -16,7 +16,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.logIn.LogIn;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
-import com.example.roofcare.helper.TextWatcherVerify;
+import com.example.roofcare.helper.textWatcherValidation.TextWatcherVerify;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

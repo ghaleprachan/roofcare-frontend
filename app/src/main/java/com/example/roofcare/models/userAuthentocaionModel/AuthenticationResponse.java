@@ -3,7 +3,7 @@ package com.example.roofcare.models.userAuthentocaionModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthenticationModel {
+public class AuthenticationResponse {
 
     @SerializedName("success")
     @Expose

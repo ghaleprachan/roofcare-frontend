@@ -16,6 +16,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.register.Register;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
+import com.example.roofcare.sshSolve.HttpsTrustManager;
 
 public class SplashScreen extends AppCompatActivity {
     private TextView roof, care;
@@ -24,10 +25,10 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        HttpsTrustManager.allowAllSSL();
         uiInit();
         animNote();
         finishSplashScreen();
-
         YoYo.with(Techniques.Shake).playOn(care);
     }
 

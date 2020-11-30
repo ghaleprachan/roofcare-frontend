@@ -1,6 +1,6 @@
-package com.example.roofcare.activities.services;
+package com.example.roofcare.services.moreOptionService;
 
-import com.example.roofcare.models.MoreOptionsModel;
+import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/viewProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/circular_image_bg"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/face" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/profileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLength="25"
+                            android:text="Jharna Thapa"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/postedDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLength="25"
+                            android:text="December 19 2019: 2:45PM"
+                            android:textColor="#99000000"
+                            android:textSize="12sp"
+                            android:textStyle="normal"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/moreOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    app:tint="@color/black"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                android:id="@+id/expand_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                app:animDuration="200"
+                app:maxCollapsedLines="3">
+
+                <TextView
+                    android:id="@id/expandable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@android:color/transparent"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="0dp"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            android:background="@color/viewBg"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/viewBg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/call"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_baseline_phone_24"
+                app:tint="@color/black"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_bookmark_border_24"
+                app:tint="@color/black"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

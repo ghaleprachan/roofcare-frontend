@@ -1,9 +1,9 @@
-package com.example.roofcare.models;
+package com.example.roofcare.models.moreOptionModel;
 
 public class MoreOptionsModel {
-    private Enum id;
-    private String name;
-    private Integer icon;
+    private final Enum id;
+    private final String name;
+    private final Integer icon;
 
     public MoreOptionsModel(Enum id, String name, Integer icon) {
         this.id = id;

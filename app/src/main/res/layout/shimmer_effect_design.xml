@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/circular_image_bg"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="230dp"
+                            android:layout_height="20dp"
+                            android:background="@color/viewBg" />
+
+                        <View
+                            android:layout_width="100dp"
+                            android:layout_height="15dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/viewBg" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/viewBg" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/viewBg" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/viewBg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/viewBg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@color/viewBg" />
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/viewBg" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

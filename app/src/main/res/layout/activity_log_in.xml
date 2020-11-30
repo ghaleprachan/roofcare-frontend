@@ -79,7 +79,7 @@
                     android:gravity="top"
                     android:hint="Enter username"
                     android:inputType="text"
-                    android:text="9846356410"
+                    android:text="asdf"
                     tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,14 +102,29 @@
                     android:gravity="top"
                     android:hint="Enter password"
                     android:inputType="textPassword"
-                    android:text="admin"
+                    android:text="asdf"
                     tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/errorInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/red"
+                android:gravity="center"
+                android:text="@string/invalid_details"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:drawableLeftCompat="@drawable/ic_baseline_error_24"
+                tools:ignore="UnusedAttribute,UseCompatTextViewDrawableXml" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
 
                 <CheckBox
                     android:id="@+id/checkbox_remember_me"
@@ -131,14 +146,33 @@
                     tools:ignore="RelativeOverlap" />
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/buttonLogIn"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/button_bg"
-                android:text="@string/log_in"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/buttonLogIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/log_in"
+                    android:textColor="@color/white" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    tools:ignore="UnusedAttribute" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

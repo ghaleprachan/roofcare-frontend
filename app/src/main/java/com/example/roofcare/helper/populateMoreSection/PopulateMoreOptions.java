@@ -1,9 +1,9 @@
-package com.example.roofcare.helper;
+package com.example.roofcare.helper.populateMoreSection;
 
 import com.example.roofcare.R;
-import com.example.roofcare.activities.services.MoreOptionsService;
+import com.example.roofcare.services.moreOptionService.MoreOptionsService;
 import com.example.roofcare.enumClasses.MoreOptionsId;
-import com.example.roofcare.models.MoreOptionsModel;
+import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
 public class PopulateMoreOptions {
     public static void addOptions() {

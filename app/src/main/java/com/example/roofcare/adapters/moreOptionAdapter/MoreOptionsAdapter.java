@@ -1,4 +1,4 @@
-package com.example.roofcare.adapters;
+package com.example.roofcare.adapters.moreOptionAdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
 import com.example.roofcare.enumClasses.MoreOptionsId;
-import com.example.roofcare.models.MoreOptionsModel;
+import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
 import java.util.ArrayList;
 
