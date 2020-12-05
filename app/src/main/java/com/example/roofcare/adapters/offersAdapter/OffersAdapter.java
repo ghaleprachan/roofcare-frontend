@@ -1,6 +1,8 @@
 package com.example.roofcare.adapters.offersAdapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +64,14 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
         holder.profileName.setText(offers.get(position).getAddedByName());
         holder.postDate.setText(DateParser.formatDate(offers.get(position).getPostedDate(), "MMM dd 'at' h:ss a"));
         holder.postDescription.setText(offers.get(position).getOfferDescription());
+        holder.moreOptions.setVisibility(View.GONE);
+
+        onCallClick(holder.callUser, position);
+    }
+
+    private void onCallClick(ImageView callUser, int position) {
+        callUser.setOnClickListener(v -> mContext.startActivity(new Intent(Intent.ACTION_DIAL,
+                Uri.parse("tel:" + offers.get(position).getAddedByContact()))));
     }
 
     @Override

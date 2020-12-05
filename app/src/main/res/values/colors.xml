@@ -14,4 +14,8 @@
     <color name="opacityBlue">#1A2874A6</color>
     <color name="viewBg">#BFC1CF</color>
     <color name="red">#D8000C</color>
+
+    <color name="view_active">#BDC2DF</color>
+    <color name="view_inactive_bg">#FFFFFF</color><!--1A2874A6-->
+    <color name="visit_profile_bg">#402874A6</color>
 </resources>

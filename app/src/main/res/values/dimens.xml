@@ -2,6 +2,11 @@
 <resources>
     <dimen name="button_height">56dp</dimen>
     <dimen name="anim_loading_margin">500dp</dimen>
-    <dimen name="notes_description_top">2dp</dimen>
+    <dimen name="notes_description_top">3dp</dimen>
     <dimen name="more_profile_img">50dp</dimen>
+    <dimen name="radius_view">5dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="profile_image_size">90dp</dimen>
 </resources>

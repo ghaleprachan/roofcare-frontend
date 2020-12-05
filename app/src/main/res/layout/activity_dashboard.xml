@@ -9,7 +9,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavView">
+        android:layout_above="@+id/view">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -34,6 +34,13 @@
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/bottomNavView"
+        android:background="@color/view_inactive_bg" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavView"
@@ -60,6 +67,7 @@
         android:text="@string/add_offer"
         android:textColor="@color/white"
         android:theme="@style/BoxTheme"
+        android:visibility="visible"
         app:icon="@drawable/ic_baseline_add_circle_outline_24"
         app:iconTint="@color/white"
         tools:ignore="RtlHardcoded,UnusedAttribute" />

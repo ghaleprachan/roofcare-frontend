@@ -16,27 +16,33 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
-            android:name=".activities.dashboard.Dashboard"
-            android:launchMode="singleTop">
-            <intent-filter>
+            android:name=".activities.userProfile.UserProfile"
+            android:parentActivityName=".activities.dashboard.Dashboard">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
+        <activity
+            android:name=".activities.search.SearchActivity"
+            android:parentActivityName=".activities.dashboard.Dashboard"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".activities.dashboard.Dashboard"
+            android:launchMode="singleTop" />
         <activity
             android:name=".activities.register.Register"
             android:launchMode="singleTop" />
         <activity
             android:name=".activities.logIn.LogIn"
             android:parentActivityName=".activities.register.Register" />
-        <!-- Start of the application -->
         <activity android:name=".activities.splashScreen.SplashScreen">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <meta-data

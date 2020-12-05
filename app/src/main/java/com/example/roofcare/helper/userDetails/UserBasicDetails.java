@@ -1,0 +1,12 @@
+package com.example.roofcare.helper.userDetails;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class UserBasicDetails {
+    public static String getUserName(Context mContext) {
+        SharedPreferences preferences = mContext.getSharedPreferences("LOGIN_DETAILS", 0);
+        return preferences.getString("Username", null);
+    }
+
+}

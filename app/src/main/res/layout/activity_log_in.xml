@@ -79,7 +79,7 @@
                     android:gravity="top"
                     android:hint="Enter username"
                     android:inputType="text"
-                    android:text="asdf"
+                    android:text="admin"
                     tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +102,7 @@
                     android:gravity="top"
                     android:hint="Enter password"
                     android:inputType="textPassword"
-                    android:text="asdf"
+                    android:text="admin"
                     tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 

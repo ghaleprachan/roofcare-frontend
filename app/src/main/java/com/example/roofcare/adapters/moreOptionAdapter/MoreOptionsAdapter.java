@@ -1,18 +1,26 @@
 package com.example.roofcare.adapters.moreOptionAdapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
+import com.example.roofcare.activities.logIn.LogIn;
+import com.example.roofcare.activities.register.Register;
 import com.example.roofcare.enumClasses.MoreOptionsId;
 import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
@@ -51,9 +59,27 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
         }
     }
 
-    private void onParentClick(LinearLayout parent, int position) {
+    private void onParentClick(RelativeLayout parent, int position) {
         parent.setOnClickListener(v -> {
-            Toast.makeText(mContext, moreOptions.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+            if (moreOptions.get(position).getId().equals(MoreOptionsId.SIGN_OUT)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                builder.setTitle("ALERT");
+                builder.setIcon(R.drawable.ic_baseline_power_settings_new_24);
+                builder.setMessage("Sure you want to sign out!");
+                builder.setPositiveButton("YES", (dialog, which) -> {
+                    SharedPreferences preferences = mContext.getSharedPreferences("LOGIN_DETAILS", 0);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    mContext.startActivity(new Intent(mContext, Register.class));
+                    ((AppCompatActivity) mContext).finish();
+                    dialog.dismiss();
+                });
+                android.app.AlertDialog alert = builder.create();
+                alert.show();
+
+            }
         });
     }
 
@@ -64,7 +90,7 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView icon, more;
-        private LinearLayout parent;
+        private RelativeLayout parent;
         private TextView title;
 
         public MyViewHolder(@NonNull View itemView) {

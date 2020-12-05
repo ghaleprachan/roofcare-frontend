@@ -1,5 +1,6 @@
 package com.example.roofcare.activities.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.roofcare.R;
 import com.example.roofcare.activities.dashboard.fragments.MoreFragment;
 import com.example.roofcare.activities.dashboard.fragments.OffersFragment;
+import com.example.roofcare.activities.search.SearchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Dashboard extends AppCompatActivity {
@@ -71,7 +73,7 @@ public class Dashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
         if (menuId == R.id.toolbar_search) {
-            Toast.makeText(this, "Opening search", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

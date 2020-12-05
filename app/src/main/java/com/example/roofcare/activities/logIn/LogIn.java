@@ -1,8 +1,11 @@
 package com.example.roofcare.activities.logIn;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +50,7 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+
         UiInitialize();
         userName.setSelection(Objects.requireNonNull(userName.getText()).toString().length());
         password.setSelection(Objects.requireNonNull(password.getText()).toString().length());
@@ -72,6 +76,7 @@ public class LogIn extends AppCompatActivity {
 
     private void apiCall() {
         try {
+            erroInput.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
             logIn.setEnabled(false);
             JSONObject jsonBody = new JSONObject();
@@ -82,6 +87,7 @@ public class LogIn extends AppCompatActivity {
                     ApiCollection.logInAuthentication,
                     jsonBody,
                     response -> {
+                        erroInput.setVisibility(View.GONE);
                         logIn.setEnabled(true);
                         progressBar.setVisibility(View.GONE);
                         try {
@@ -89,8 +95,7 @@ public class LogIn extends AppCompatActivity {
                             AuthenticationResponse authenticationResponse = gson.fromJson(String.valueOf(response), AuthenticationResponse.class);
                             if (authenticationResponse.getSuccess()) {
                                 erroInput.setVisibility(View.GONE);
-                                startActivity(new Intent(this, Dashboard.class));
-                                finish();
+                                gotToDashboard(authenticationResponse);
                             } else {
                                 erroInput.setVisibility(View.VISIBLE);
                                 YoYo.with(Techniques.Shake).playOn(erroInput);
@@ -102,10 +107,11 @@ public class LogIn extends AppCompatActivity {
                         }
                     },
                     error -> {
+                        progressBar.setVisibility(View.GONE);
                         logIn.setEnabled(true);
                         YoYo.with(Techniques.Shake).playOn(erroInput);
                         erroInput.setVisibility(View.VISIBLE);
-                        erroInput.setText(error.getMessage());
+                        erroInput.setText(error.toString());
                     }
             );
             RequestQueue requestQueue = Volley.newRequestQueue(LogIn.this);
@@ -113,6 +119,19 @@ public class LogIn extends AppCompatActivity {
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void gotToDashboard(AuthenticationResponse authenticationResponse) {
+        SharedPreferences preferences = getSharedPreferences("LOGIN_DETAILS", 0);
+        @SuppressLint("CommitPrefEdits")
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Username", authenticationResponse.getUsername().toString());
+        editor.putString("FullName", authenticationResponse.getFullName().toString());
+        editor.putString("UserImage", authenticationResponse.getUserImage().toString());
+        editor.putString("UserType", authenticationResponse.getUserType().toString());
+        editor.apply();
+        startActivity(new Intent(this, Dashboard.class));
+        finish();
     }
 
     private void onRegisterTextClick() {

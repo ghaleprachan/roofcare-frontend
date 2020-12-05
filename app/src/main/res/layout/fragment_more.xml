@@ -20,8 +20,12 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
+                android:id="@+id/visitProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/visit_profile_more_click"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
@@ -29,6 +33,7 @@
                 android:paddingBottom="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImage"
                     android:layout_width="@dimen/more_profile_img"
                     android:layout_height="@dimen/more_profile_img"
                     android:background="@drawable/circular_image_bg"
@@ -60,9 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/name"
                         android:lines="1"
-                        android:text="me.soniya_tmg"
-                        android:textSize="15sp"
-                        tools:ignore="HardcodedText" />
+                        android:text="@string/visit_your_profile" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -77,10 +80,18 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_state_ideal" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:scrollbars="none" />
 
         <View
