@@ -97,7 +97,7 @@ public class OffersFragment extends Fragment {
                 },
                 error -> {
                     refresh.setVisibility(View.VISIBLE);
-                    Toast.makeText(getContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Something went wrong." + error.toString(), Toast.LENGTH_SHORT).show();
                     shimmer.setVisibility(View.GONE);
                     shimmer.stopShimmer();
                     recyclerParent.setVisibility(View.GONE);
@@ -109,7 +109,7 @@ public class OffersFragment extends Fragment {
 
     private void populateRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        OffersAdapter offersAdapter = new OffersAdapter(getContext(), OfferService.offers);
+        OffersAdapter offersAdapter = new OffersAdapter(getContext(), OfferService.offers, true);
         recyclerView.setAdapter(offersAdapter);
     }
 

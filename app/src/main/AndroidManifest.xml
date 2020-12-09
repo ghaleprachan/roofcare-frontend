@@ -16,13 +16,22 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
+            android:name=".activities.reviews.UserReviews"
+            android:parentActivityName=".activities.userProfile.UserProfile" />
+        <activity
+            android:name=".activities.userOffer.UserOffers"
+            android:parentActivityName=".activities.userProfile.UserProfile" />
+        <activity
             android:name=".activities.userProfile.UserProfile"
             android:parentActivityName=".activities.dashboard.Dashboard">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".activities.search.SearchActivity"

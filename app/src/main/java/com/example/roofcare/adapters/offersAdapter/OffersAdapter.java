@@ -29,10 +29,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHolder> {
     private final Context mContext;
     private final ArrayList<OfferResponseModel> offers;
+    private final Boolean visible;
 
-    public OffersAdapter(Context mContext, ArrayList<OfferResponseModel> offers) {
+    public OffersAdapter(Context mContext, ArrayList<OfferResponseModel> offers, Boolean visible) {
         this.mContext = mContext;
         this.offers = offers;
+        this.visible = visible;
     }
 
     @NonNull
@@ -45,6 +47,13 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        if (!visible) {
+            holder.callUser.setVisibility(View.GONE);
+            holder.savePost.setVisibility(View.GONE);
+        } else {
+            holder.callUser.setVisibility(View.VISIBLE);
+            holder.savePost.setVisibility(View.VISIBLE);
+        }
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

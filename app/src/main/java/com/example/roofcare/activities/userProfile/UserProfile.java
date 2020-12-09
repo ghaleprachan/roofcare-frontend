@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
+import com.example.roofcare.activities.userOffer.UserOffers;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
@@ -77,7 +79,7 @@ public class UserProfile extends AppCompatActivity {
 
     private void onOfferClick() {
         offers.setOnClickListener(v -> {
-            Toast.makeText(this, "Offers Showing", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, UserOffers.class));
         });
     }
 
