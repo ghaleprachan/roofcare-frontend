@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
+import com.example.roofcare.activities.reviews.UserReviews;
 import com.example.roofcare.activities.userOffer.UserOffers;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
@@ -72,15 +73,11 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void onReviewsClick() {
-        reviews.setOnClickListener(v -> {
-            Toast.makeText(this, "Reviews Opening", Toast.LENGTH_SHORT).show();
-        });
+        reviews.setOnClickListener(v -> startActivity(new Intent(this, UserReviews.class)));
     }
 
     private void onOfferClick() {
-        offers.setOnClickListener(v -> {
-            startActivity(new Intent(this, UserOffers.class));
-        });
+        offers.setOnClickListener(v -> startActivity(new Intent(this, UserOffers.class)));
     }
 
     private void onEditClick() {

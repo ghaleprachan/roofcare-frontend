@@ -1,7 +1,7 @@
 package com.example.roofcare.apis;
 
 public class ApiCollection {
-    public static String baseUrl = "https://roofcare-apis.conveyor.cloud/";
+    public static String baseUrl = "https://192.168.1.6ada:45455/";
 
     public static String logInAuthentication = baseUrl + "api/User/LogInAuthorization";
 
