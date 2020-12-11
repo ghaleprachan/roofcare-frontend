@@ -41,4 +41,7 @@
     <string name="reviews">Reviews</string>
     <string name="book_now">Book Now!</string>
     <string name="visit_your_profile">Visit your profile</string>
+    <string name="this_is_me_prachan_ghale">This is me prachan ghale</string>
+    <string name="write_review">Write review</string>
+    <string name="add_review">Add Review</string>
 </resources>
