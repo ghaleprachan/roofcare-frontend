@@ -45,4 +45,6 @@
     <string name="write_review">Write review</string>
     <string name="add_review">Add Review</string>
     <string name="write_feedback">Write Feedback</string>
+    <string name="send_request">Send Request</string>
+    <string name="send_booking_request">Send Booking Request</string>
 </resources>

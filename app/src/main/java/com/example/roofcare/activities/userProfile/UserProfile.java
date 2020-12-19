@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
+import com.example.roofcare.activities.bookingsForms.BookRequestFormActivity;
 import com.example.roofcare.activities.reviews.UserReviews;
 import com.example.roofcare.activities.userOffer.UserOffers;
 import com.example.roofcare.apis.ApiCollection;
@@ -65,6 +66,15 @@ public class UserProfile extends AppCompatActivity {
         if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
             bookUserNow.setVisibility(View.GONE);
         }
+        onBookUserNowClick();
+    }
+
+    private void onBookUserNowClick() {
+        bookUserNow.setOnClickListener(v->{
+            Intent intent = new Intent(this, BookRequestFormActivity.class);
+            intent.putExtra("Id", getId());
+            startActivity(intent);
+        });
     }
 
     private String getUserNameIntent() {
