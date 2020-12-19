@@ -15,6 +15,25 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".activities.bookingHistory.BookingHistoryActivity"></activity>
+        <activity android:name=".activities.bookingRequest.BookingRequestDescActivity" />
+        <activity android:name=".activities.bookingRequest.BookingRequestItemActivity" />
+        <activity
+            android:name=".activities.bookings.BookedDescriptionActivity"
+            android:parentActivityName=".activities.dashboard.Dashboard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.bookings.BookedItemsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.savedOffers.SavedOfferActivity"
             android:parentActivityName=".activities.dashboard.Dashboard" />
