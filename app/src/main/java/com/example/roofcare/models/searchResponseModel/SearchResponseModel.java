@@ -1,15 +1,16 @@
-package com.example.roofcare.models.userAuthentocaionModel;
+package com.example.roofcare.models.searchResponseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthenticationResponse {
-    @SerializedName("success")
+public class SearchResponseModel {
+
+    @SerializedName("professionId")
     @Expose
-    private Boolean success;
-    @SerializedName("message")
+    private Integer professionId;
+    @SerializedName("professionName")
     @Expose
-    private String message;
+    private String professionName;
     @SerializedName("userId")
     @Expose
     private Integer userId;
@@ -19,6 +20,9 @@ public class AuthenticationResponse {
     @SerializedName("fullName")
     @Expose
     private String fullName;
+    @SerializedName("verified")
+    @Expose
+    private Boolean verified;
     @SerializedName("userType")
     @Expose
     private String userType;
@@ -26,20 +30,20 @@ public class AuthenticationResponse {
     @Expose
     private String userImage;
 
-    public Boolean getSuccess() {
-        return success;
+    public Integer getProfessionId() {
+        return professionId;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public void setProfessionId(Integer professionId) {
+        this.professionId = professionId;
     }
 
-    public String getMessage() {
-        return message;
+    public String getProfessionName() {
+        return professionName;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setProfessionName(String professionName) {
+        this.professionName = professionName;
     }
 
     public Integer getUserId() {
@@ -66,6 +70,14 @@ public class AuthenticationResponse {
         this.fullName = fullName;
     }
 
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
     public String getUserType() {
         return userType;
     }
@@ -81,4 +93,5 @@ public class AuthenticationResponse {
     public void setUserImage(String userImage) {
         this.userImage = userImage;
     }
+
 }

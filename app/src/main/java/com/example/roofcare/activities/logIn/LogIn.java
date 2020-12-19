@@ -125,19 +125,18 @@ public class LogIn extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("LOGIN_DETAILS", 0);
         @SuppressLint("CommitPrefEdits")
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("Username", authenticationResponse.getUsername().toString());
-        editor.putString("FullName", authenticationResponse.getFullName().toString());
-        editor.putString("UserImage", authenticationResponse.getUserImage().toString());
-        editor.putString("UserType", authenticationResponse.getUserType().toString());
+        editor.putInt("UserId", authenticationResponse.getUserId());
+        editor.putString("Username", authenticationResponse.getUsername());
+        editor.putString("FullName", authenticationResponse.getFullName());
+        editor.putString("UserImage", authenticationResponse.getUserImage());
+        editor.putString("UserType", authenticationResponse.getUserType());
         editor.apply();
         startActivity(new Intent(this, Dashboard.class));
         finish();
     }
 
     private void onRegisterTextClick() {
-        register.setOnClickListener(v -> {
-            startRegisterActivity();
-        });
+        register.setOnClickListener(v -> startRegisterActivity());
     }
 
     private void startRegisterActivity() {

@@ -15,8 +15,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/face" />
@@ -29,7 +29,7 @@
             android:layout_toRightOf="@+id/profileImage"
             android:text="Prachan Ghale"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/addedDate"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/profileImage"
             android:layout_toRightOf="@id/profileImage"
             android:drawablePadding="5dp"
@@ -57,7 +57,7 @@
             android:gravity="center"
             android:text="4.2"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             app:drawableRightCompat="@drawable/ic_baseline_star_24"
             tools:ignore="HardcodedText,UnusedAttribute,UseCompatTextViewDrawableXml" />
@@ -66,10 +66,14 @@
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileImage"
+            android:layout_below="@id/rating"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
-            android:text="@string/this_is_me_prachan_ghale"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

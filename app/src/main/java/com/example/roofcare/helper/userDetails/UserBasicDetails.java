@@ -9,4 +9,8 @@ public class UserBasicDetails {
         return preferences.getString("Username", null);
     }
 
+    public static Integer getId(Context mContext) {
+        SharedPreferences preferences = mContext.getSharedPreferences("LOGIN_DETAILS", 0);
+        return preferences.getInt("UserId", 0);
+    }
 }

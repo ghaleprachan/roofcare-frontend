@@ -22,10 +22,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.roofcare.R;
 import com.example.roofcare.adapters.offersAdapter.OffersAdapter;
 import com.example.roofcare.apis.ApiCollection;
+import com.example.roofcare.helper.userDetails.UserBasicDetails;
+import com.example.roofcare.models.idModel.SavedIdResponseModel;
 import com.example.roofcare.models.offerResponseModel.OfferResponseModel;
 import com.example.roofcare.services.offerService.OfferService;
+import com.example.roofcare.services.savedIdService.SavedIsListService;
 import com.example.roofcare.sshSolve.HttpsTrustManager;
-import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,9 +54,42 @@ public class OffersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         uiInitialize(view);
-        offersApiCall();
+        getSavedOfferIds();
+        //offersApiCall();
         onSwipeRefresh();
         onRefreshClick();
+    }
+
+    private void getSavedOfferIds() {
+        HttpsTrustManager.allowAllSSL();
+        refresh.setVisibility(View.GONE);
+        shimmer.setVisibility(View.VISIBLE);
+        shimmer.startShimmer();
+        recyclerParent.setVisibility(View.GONE);
+
+        StringRequest request = new StringRequest(
+                Request.Method.GET,
+                ApiCollection.getSavedOfferId + UserBasicDetails.getId(requireContext()),
+                response -> {
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.create();
+                    SavedIdResponseModel responseModel = gson.fromJson(response, SavedIdResponseModel.class);
+                    if (responseModel != null) {
+                        SavedIsListService.addAll(responseModel.getSaveds());
+                    }
+                    offersApiCall();
+                },
+                error -> {
+                    refresh.setVisibility(View.VISIBLE);
+                    Toast.makeText(getContext(), "Something went wrong." + error.toString(), Toast.LENGTH_SHORT).show();
+                    shimmer.setVisibility(View.GONE);
+                    shimmer.stopShimmer();
+                    recyclerParent.setVisibility(View.GONE);
+                    Toast.makeText(requireContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+                }
+        );
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        queue.add(request);
     }
 
     private void onRefreshClick() {
@@ -63,17 +98,12 @@ public class OffersFragment extends Fragment {
 
     private void onSwipeRefresh() {
         swipeRefresh.setOnRefreshListener(() -> {
-            offersApiCall();
+            getSavedOfferIds();
             swipeRefresh.setRefreshing(false);
         });
     }
 
     private void offersApiCall() {
-        HttpsTrustManager.allowAllSSL();
-        refresh.setVisibility(View.GONE);
-        shimmer.setVisibility(View.VISIBLE);
-        shimmer.startShimmer();
-        recyclerParent.setVisibility(View.GONE);
         StringRequest request = new StringRequest(
                 Request.Method.GET,
                 ApiCollection.getALlOffers,

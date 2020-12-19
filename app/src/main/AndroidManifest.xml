@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
+            android:name=".activities.savedOffers.SavedOfferActivity"
+            android:parentActivityName=".activities.dashboard.Dashboard" />
+        <activity
             android:name=".activities.reviews.UserReviews"
             android:parentActivityName=".activities.userProfile.UserProfile" />
         <activity

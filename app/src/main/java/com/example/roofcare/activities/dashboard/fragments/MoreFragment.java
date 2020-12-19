@@ -55,6 +55,7 @@ public class MoreFragment extends Fragment {
     private void onVisitProfileClick() {
         visitProfile.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), UserProfile.class);
+            intent.putExtra("UserId", UserBasicDetails.getUserName(requireContext()));
             startActivity(intent);
         });
     }

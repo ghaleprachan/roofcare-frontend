@@ -45,41 +45,51 @@ public class UserOffers extends AppCompatActivity {
         onRefreshClick();
     }
 
+    private String getUserNameIntent() {
+        Bundle bundle = getIntent().getExtras();
+        return bundle.getString("UserId", null);
+    }
+
     private void onRefreshClick() {
         refresh.setOnClickListener(v -> postsApiCall());
     }
 
     private void postsApiCall() {
-        loading.setVisibility(View.VISIBLE);
-        postsRecyclerView.setVisibility(View.GONE);
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(
-                Request.Method.GET,
-                ApiCollection.getUserOffers + UserBasicDetails.getUserName(this),
-                response -> {
-                    loading.setVisibility(View.GONE);
-                    postsRecyclerView.setVisibility(View.VISIBLE);
-                    try {
-                        ArrayList<OfferResponseModel> offersList = new Gson().fromJson(response, new TypeToken<List<OfferResponseModel>>() {
-                        }.getType());
-                        if (offersList.size() == 0) {
-                            Toast.makeText(this, "No offers are available for now!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            UserOfferService.addOffers(offersList);
-                            populateRecyclerView();
+        try {
+
+            loading.setVisibility(View.VISIBLE);
+            postsRecyclerView.setVisibility(View.GONE);
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(
+                    Request.Method.GET,
+                    ApiCollection.getUserOffers + getUserNameIntent(),
+                    response -> {
+                        loading.setVisibility(View.GONE);
+                        postsRecyclerView.setVisibility(View.VISIBLE);
+                        try {
+                            ArrayList<OfferResponseModel> offersList = new Gson().fromJson(response, new TypeToken<List<OfferResponseModel>>() {
+                            }.getType());
+                            if (offersList.size() == 0) {
+                                Toast.makeText(this, "No offers are available for now!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                UserOfferService.addOffers(offersList);
+                                populateRecyclerView();
+                            }
+                        } catch (Exception ex) {
+                            Toast.makeText(this, "Failed to get offer.", Toast.LENGTH_SHORT).show();
                         }
-                    } catch (Exception ex) {
-                        Toast.makeText(this, "Failed to get offer.", Toast.LENGTH_SHORT).show();
+                    },
+                    error -> {
+                        loading.setVisibility(View.GONE);
+                        postsRecyclerView.setVisibility(View.VISIBLE);
+                        Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                },
-                error -> {
-                    loading.setVisibility(View.GONE);
-                    postsRecyclerView.setVisibility(View.VISIBLE);
-                    Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show();
-                }
-        );
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
+            );
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(request);
+        } catch (Exception ex) {
+            Toast.makeText(this, "Exception: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void populateRecyclerView() {

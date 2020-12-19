@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.roofcare.R;
 import com.example.roofcare.activities.logIn.LogIn;
 import com.example.roofcare.activities.register.Register;
+import com.example.roofcare.activities.savedOffers.SavedOfferActivity;
 import com.example.roofcare.enumClasses.MoreOptionsId;
 import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
@@ -78,7 +79,8 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                 });
                 android.app.AlertDialog alert = builder.create();
                 alert.show();
-
+            } else if (moreOptions.get(position).getId().equals(MoreOptionsId.SAVED)) {
+                mContext.startActivity(new Intent(mContext, SavedOfferActivity.class));
             }
         });
     }

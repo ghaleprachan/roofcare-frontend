@@ -17,6 +17,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.dashboard.fragments.MoreFragment;
 import com.example.roofcare.activities.dashboard.fragments.OffersFragment;
 import com.example.roofcare.activities.search.SearchActivity;
+import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Dashboard extends AppCompatActivity {

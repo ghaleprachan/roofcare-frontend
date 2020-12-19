@@ -45,14 +45,15 @@ public class UserProfile extends AppCompatActivity {
     private ScrollView scrollView;
     private ImageView refresh;
     private CardView bookCard;
+    private String uName;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         uiInitial();
         progressBar.setVisibility(View.GONE);
-        username.setText(UserBasicDetails.getUserName(this));
         onBackClick();
         userProfileApiCall();
         onEditClick();
@@ -60,6 +61,20 @@ public class UserProfile extends AppCompatActivity {
         onReviewsClick();
         onBookClick();
         onRefreshClick();
+
+        if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
+            bookUserNow.setVisibility(View.GONE);
+        }
+    }
+
+    private String getUserNameIntent() {
+        Bundle bundle = getIntent().getExtras();
+        return bundle.getString("UserId", null);
+    }
+
+    private Integer getId() {
+        Bundle bundle = getIntent().getExtras();
+        return bundle.getInt("Id", 0);
     }
 
     private void onRefreshClick() {
@@ -67,17 +82,24 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void onBookClick() {
-        bookUserNow.setOnClickListener(v -> {
-            Toast.makeText(this, "Booking", Toast.LENGTH_SHORT).show();
-        });
+        bookUserNow.setOnClickListener(v -> Toast.makeText(this, "Booking", Toast.LENGTH_SHORT).show());
     }
 
     private void onReviewsClick() {
-        reviews.setOnClickListener(v -> startActivity(new Intent(this, UserReviews.class)));
+        reviews.setOnClickListener(v -> {
+            Intent intent = new Intent(this, UserReviews.class);
+            intent.putExtra("Id", getId());
+            intent.putExtra("UserId", uName);
+            startActivity(intent);
+        });
     }
 
     private void onOfferClick() {
-        offers.setOnClickListener(v -> startActivity(new Intent(this, UserOffers.class)));
+        offers.setOnClickListener(v -> {
+            Intent intent = new Intent(this, UserOffers.class);
+            intent.putExtra("UserId", uName);
+            startActivity(intent);
+        });
     }
 
     private void onEditClick() {
@@ -88,12 +110,22 @@ public class UserProfile extends AppCompatActivity {
 
     private void userProfileApiCall() {
         try {
+            if (getUserNameIntent() != null) {
+                uName = getUserNameIntent();
+                if (!uName.equals(UserBasicDetails.getUserName(UserProfile.this))) {
+                    edit.setVisibility(View.GONE);
+                }
+            } else {
+                edit.setVisibility(View.VISIBLE);
+                uName = UserBasicDetails.getUserName(UserProfile.this);
+            }
+            username.setText(uName);
             progressBar.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.GONE);
             bookCard.setVisibility(View.GONE);
             StringRequest request = new StringRequest(
                     Request.Method.GET,
-                    ApiCollection.getUserProfile + UserBasicDetails.getUserName(UserProfile.this),
+                    ApiCollection.getUserProfile + uName,
                     response -> {
                         progressBar.setVisibility(View.GONE);
                         scrollView.setVisibility(View.VISIBLE);
@@ -118,7 +150,7 @@ public class UserProfile extends AppCompatActivity {
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
         } catch (Exception ex) {
-            Toast.makeText(this, "Something went wrong, Try Again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong, Try Again!" + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
