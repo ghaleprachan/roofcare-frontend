@@ -5,13 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.roofcare.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityBookRequestFormBinding;
+import com.example.roofcare.helper.userDetails.UserBasicDetails;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Objects;
 
 public class BookRequestFormActivity extends AppCompatActivity {
     private ActivityBookRequestFormBinding binding;
@@ -25,9 +34,9 @@ public class BookRequestFormActivity extends AppCompatActivity {
         binding = ActivityBookRequestFormBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Toast.makeText(this, getId().toString(), Toast.LENGTH_SHORT).show();
         onSetDateClick();
         onBackClick();
+        onBookNowClick();
     }
 
     private void onBackClick() {
@@ -62,5 +71,64 @@ public class BookRequestFormActivity extends AppCompatActivity {
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
             datePickerDialog.show();
         });
+    }
+
+    private void onBookNowClick() {
+        binding.sendRequest.setOnClickListener(v -> {
+            if (binding.serviceType.getText().toString().isEmpty()) {
+                binding.serviceType.requestFocus();
+                binding.serviceType.setError("Add service type, eg: plumber");
+            } else if (binding.problemDescription.getText().toString().isEmpty()) {
+                binding.problemDescription.requestFocus();
+                binding.problemDescription.setError("Elaborate your problem.");
+            } else if (binding.customerAddress.getText().toString().isEmpty()) {
+                binding.customerAddress.requestFocus();
+                binding.customerAddress.setError("Add your address");
+            } else if (binding.serviceDate.getText().toString().isEmpty()) {
+                binding.serviceDate.requestFocus();
+                binding.serviceDate.setError("Select service date");
+            } else {
+                sendServiceRequestApi();
+            }
+        });
+    }
+
+    private void sendServiceRequestApi() {
+        try {
+            binding.sendRequest.setEnabled(false);
+            binding.progress.setVisibility(View.VISIBLE);
+            JSONObject object = new JSONObject();
+            object.put("bookingById", UserBasicDetails.getId(this));
+            object.put("bookingToId", getId());
+            object.put("serviceType", binding.serviceType.getText().toString());
+            object.put("serviceDate", binding.serviceDate.getText().toString());
+            object.put("customerAddress", binding.customerAddress.getText().toString());
+            object.put("problemDescription", binding.problemDescription.getText().toString());
+
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.POST,
+                    ApiCollection.sendBookingRequest,
+                    object,
+                    response -> {
+                        binding.progress.setVisibility(View.GONE);
+                        binding.sendRequest.setEnabled(true);
+                        try {
+                            Toast.makeText(this, response.getString("Success"), Toast.LENGTH_SHORT).show();
+                            this.finish();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    },
+                    error -> {
+                        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                        binding.sendRequest.setEnabled(true);
+                        binding.progress.setVisibility(View.GONE);
+                    }
+            );
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(request);
+        } catch (Exception ex) {
+            Log.d("TAGRequestException", "sendServiceRequestApi: " + ex.getMessage());
+        }
     }
 }

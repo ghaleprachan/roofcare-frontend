@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
+import com.example.roofcare.activities.bookingRequest.BookingRequestItemActivity;
 import com.example.roofcare.activities.logIn.LogIn;
 import com.example.roofcare.activities.register.Register;
 import com.example.roofcare.activities.savedOffers.SavedOfferActivity;
@@ -81,6 +82,8 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                 alert.show();
             } else if (moreOptions.get(position).getId().equals(MoreOptionsId.SAVED)) {
                 mContext.startActivity(new Intent(mContext, SavedOfferActivity.class));
+            } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKING_REQUESTS)) {
+                mContext.startActivity(new Intent(mContext, BookingRequestItemActivity.class));
             }
         });
     }

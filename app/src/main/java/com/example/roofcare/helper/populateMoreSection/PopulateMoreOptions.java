@@ -8,7 +8,7 @@ import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 public class PopulateMoreOptions {
     public static void addOptions() {
         MoreOptionsModel modelOne = new MoreOptionsModel(MoreOptionsId.BOOKINGS, "Bookings", R.drawable.ic_baseline_book_24);
-        MoreOptionsModel modelTwo = new MoreOptionsModel(MoreOptionsId.BOOKING_REQUESTS, "Bookings", R.drawable.ic_baseline_post_add_24);
+        MoreOptionsModel modelTwo = new MoreOptionsModel(MoreOptionsId.BOOKING_REQUESTS, "Booking Requests", R.drawable.ic_baseline_post_add_24);
         MoreOptionsModel modelThree = new MoreOptionsModel(MoreOptionsId.BOOKING_HISTORY, "Booking History", R.drawable.ic_baseline_history_24);
         MoreOptionsModel modelFour = new MoreOptionsModel(MoreOptionsId.SETTINGS, "Settings", R.drawable.ic_baseline_settings_24);
         MoreOptionsModel modelFive = new MoreOptionsModel(MoreOptionsId.SAVED, "Saved", R.drawable.ic_baseline_bookmark_24);

@@ -70,7 +70,7 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void onBookUserNowClick() {
-        bookUserNow.setOnClickListener(v->{
+        bookUserNow.setOnClickListener(v -> {
             Intent intent = new Intent(this, BookRequestFormActivity.class);
             intent.putExtra("Id", getId());
             startActivity(intent);
@@ -92,7 +92,11 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void onBookClick() {
-        bookUserNow.setOnClickListener(v -> Toast.makeText(this, "Booking", Toast.LENGTH_SHORT).show());
+        bookUserNow.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BookRequestFormActivity.class);
+            intent.putExtra("Id", getId());
+            startActivity(intent);
+        });
     }
 
     private void onReviewsClick() {

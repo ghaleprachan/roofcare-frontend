@@ -47,4 +47,5 @@
     <string name="write_feedback">Write Feedback</string>
     <string name="send_request">Send Request</string>
     <string name="send_booking_request">Send Booking Request</string>
+    <string name="booking_requests">Booking Requests</string>
 </resources>

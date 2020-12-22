@@ -26,9 +26,6 @@
         <activity
             android:name=".activities.bookingHistory.BookingHistoryActivity"
             android:parentActivityName=".activities.dashboard.Dashboard" />
-        <activity
-            android:name=".activities.bookingRequest.BookingRequestDescActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
         <activity android:name=".activities.bookingRequest.BookingRequestItemActivity" />
         <activity
             android:name=".activities.bookings.BookedDescriptionActivity"
