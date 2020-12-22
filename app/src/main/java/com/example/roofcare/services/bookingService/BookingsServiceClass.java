@@ -2,11 +2,11 @@ package com.example.roofcare.services.bookingService;
 
 import com.example.roofcare.models.bookingResponse.BookingResponseModel;
 
-public class BookingServiceClass {
+public class BookingsServiceClass {
     public static BookingResponseModel responseModel;
 
     public static boolean addBookingResponse(BookingResponseModel responseModel) {
-        BookingServiceClass.responseModel = responseModel;
+        BookingsServiceClass.responseModel = responseModel;
         return true;
     }
 }

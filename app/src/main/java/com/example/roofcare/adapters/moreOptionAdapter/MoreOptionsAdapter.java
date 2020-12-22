@@ -84,6 +84,8 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                 mContext.startActivity(new Intent(mContext, SavedOfferActivity.class));
             } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKING_REQUESTS)) {
                 mContext.startActivity(new Intent(mContext, BookingRequestItemActivity.class));
+            } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKINGS)) {
+                mContext.startActivity(new Intent(mContext, BookingRequestItemActivity.class));
             }
         });
     }

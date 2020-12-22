@@ -3,14 +3,72 @@ package com.example.roofcare.activities.bookings;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
-import com.example.roofcare.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.roofcare.apis.ApiCollection;
+import com.example.roofcare.databinding.ActivityBookedItemsBinding;
+import com.example.roofcare.helper.userDetails.UserBasicDetails;
+import com.example.roofcare.models.bookingResponse.BookingResponseModel;
+import com.example.roofcare.services.bookingService.BookingRequestServiceClass;
+import com.example.roofcare.services.bookingService.BookingsServiceClass;
+import com.google.gson.GsonBuilder;
 
 public class BookedItemsActivity extends AppCompatActivity {
+    private ActivityBookedItemsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booked_items);
+        binding = ActivityBookedItemsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        onBackClick();
+        bookingApiCall();
+    }
+
+    private void bookingApiCall() {
+        try {
+            binding.bookings.setVisibility(View.GONE);
+            binding.loading.setVisibility(View.VISIBLE);
+            StringRequest request = new StringRequest(
+                    Request.Method.GET,
+                    ApiCollection.getBookingAndRequests + "?userId=" + UserBasicDetails.getId(this) + "&isBooked=" + false,
+                    response -> {
+                        binding.bookings.setVisibility(View.VISIBLE);
+                        binding.loading.setVisibility(View.GONE);
+                        try {
+                            BookingResponseModel responseModel = new GsonBuilder().create().fromJson(response, BookingResponseModel.class);
+                            Toast.makeText(this, responseModel.getFullName(), Toast.LENGTH_SHORT).show();
+                            if (BookingsServiceClass.addBookingResponse(responseModel)) {
+                                addToRecyclerView();
+                            }
+                        } catch (Exception ex) {
+                            Log.d("TAGRequestResException", "bookingRequestApiCall: " + ex.getMessage());
+                        }
+                    },
+                    error -> {
+                        binding.bookings.setVisibility(View.VISIBLE);
+                        binding.loading.setVisibility(View.GONE);
+                        Toast.makeText(this, "Error " + error, Toast.LENGTH_SHORT).show();
+                    }
+            );
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(request);
+        } catch (Exception ex) {
+            Log.d("TAGGetRequest", "bookingRequestApiCall: " + ex.getMessage());
+        }
+    }
+
+    private void addToRecyclerView() {
+
+    }
+
+    private void onBackClick() {
+        binding.back.setOnClickListener(v -> onBackPressed());
     }
 }

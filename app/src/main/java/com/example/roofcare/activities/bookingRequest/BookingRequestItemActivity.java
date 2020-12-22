@@ -15,7 +15,7 @@ import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityBookingRequestItemBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.example.roofcare.models.bookingResponse.BookingResponseModel;
-import com.example.roofcare.services.bookingService.BookingServiceClass;
+import com.example.roofcare.services.bookingService.BookingRequestServiceClass;
 import com.google.gson.GsonBuilder;
 
 public class BookingRequestItemActivity extends AppCompatActivity {
@@ -36,13 +36,14 @@ public class BookingRequestItemActivity extends AppCompatActivity {
             binding.loading.setVisibility(View.VISIBLE);
             StringRequest request = new StringRequest(
                     Request.Method.GET,
-                    ApiCollection.getBookingAndRequests + "?userId=" + UserBasicDetails.getId(this) + "&isBooked=" + false,
+                    ApiCollection.getBookingAndRequests + "?userId=" + UserBasicDetails.getId(this) + "&isBooked=" + true,
                     response -> {
                         binding.bookingRequests.setVisibility(View.VISIBLE);
                         binding.loading.setVisibility(View.GONE);
                         try {
                             BookingResponseModel responseModel = new GsonBuilder().create().fromJson(response, BookingResponseModel.class);
-                            if (BookingServiceClass.addBookingResponse(responseModel)) {
+                            Toast.makeText(this, responseModel.getFullName(), Toast.LENGTH_SHORT).show();
+                            if (BookingRequestServiceClass.addBookingResponse(responseModel)) {
                                 addToRecyclerView();
                             }
                         } catch (Exception ex) {
@@ -63,7 +64,7 @@ public class BookingRequestItemActivity extends AppCompatActivity {
     }
 
     private void addToRecyclerView() {
-        
+
     }
 
     private void onBackClick() {
