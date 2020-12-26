@@ -48,4 +48,16 @@
     <string name="send_request">Send Request</string>
     <string name="send_booking_request">Send Booking Request</string>
     <string name="booking_requests">Booking Requests</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="accept_booking">Make Bill</string>
+    <string-array name="booking_requests_list">
+        <item>Requests I send </item>
+        <item>Requests for me</item>
+    </string-array>
+
+    <string-array name="bookings">
+        <item>I am Booked</item>
+        <item>I Booked</item>
+    </string-array>
 </resources>

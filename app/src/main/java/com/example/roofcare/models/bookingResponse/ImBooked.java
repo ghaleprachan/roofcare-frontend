@@ -41,16 +41,16 @@ public class ImBooked {
     private String problemDescription;
     @SerializedName("serviceCharge")
     @Expose
-    private Integer serviceCharge;
+    private Double serviceCharge;
     @SerializedName("travellingCost")
     @Expose
-    private Integer travellingCost;
+    private Double travellingCost;
     @SerializedName("discountPercentage")
     @Expose
-    private Integer discountPercentage;
+    private Double discountPercentage;
     @SerializedName("totalCharge")
     @Expose
-    private Integer totalCharge;
+    private Double totalCharge;
     @SerializedName("issuedDate")
     @Expose
     private String issuedDate;
@@ -146,35 +146,35 @@ public class ImBooked {
         this.problemDescription = problemDescription;
     }
 
-    public Integer getServiceCharge() {
+    public Double getServiceCharge() {
         return serviceCharge;
     }
 
-    public void setServiceCharge(Integer serviceCharge) {
+    public void setServiceCharge(Double serviceCharge) {
         this.serviceCharge = serviceCharge;
     }
 
-    public Integer getTravellingCost() {
+    public Double getTravellingCost() {
         return travellingCost;
     }
 
-    public void setTravellingCost(Integer travellingCost) {
+    public void setTravellingCost(Double travellingCost) {
         this.travellingCost = travellingCost;
     }
 
-    public Integer getDiscountPercentage() {
+    public Double getDiscountPercentage() {
         return discountPercentage;
     }
 
-    public void setDiscountPercentage(Integer discountPercentage) {
+    public void setDiscountPercentage(Double discountPercentage) {
         this.discountPercentage = discountPercentage;
     }
 
-    public Integer getTotalCharge() {
+    public Double getTotalCharge() {
         return totalCharge;
     }
 
-    public void setTotalCharge(Integer totalCharge) {
+    public void setTotalCharge(Double totalCharge) {
         this.totalCharge = totalCharge;
     }
 

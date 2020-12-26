@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,6 +30,20 @@ public class BookedItemsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         onBackClick();
         bookingApiCall();
+        onSpinnerChange();
+    }
+
+    private void onSpinnerChange() {
+        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(BookedItemsActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     private void bookingApiCall() {
@@ -37,7 +52,7 @@ public class BookedItemsActivity extends AppCompatActivity {
             binding.loading.setVisibility(View.VISIBLE);
             StringRequest request = new StringRequest(
                     Request.Method.GET,
-                    ApiCollection.getBookingAndRequests + "?userId=" + UserBasicDetails.getId(this) + "&isBooked=" + false,
+                    ApiCollection.getBookingAndRequests + "?userId=" + UserBasicDetails.getId(this) + "&isBooked=" + true,
                     response -> {
                         binding.bookings.setVisibility(View.VISIBLE);
                         binding.loading.setVisibility(View.GONE);

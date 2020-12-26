@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".activities.bookingRequest.BookingRequestItemActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarLO"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
 
         <LinearLayout
@@ -46,12 +45,41 @@
             tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/spinnerParent"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@+id/toolbarLO"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/spinner_bg">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_baseline_expand_more_24"
+            tools:ignore="ContentDescription" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_bg"
+            android:entries="@array/booking_requests_list" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bookingRequests"
+        android:id="@+id/iBookedRequests"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarLO" />
+        android:layout_below="@+id/spinnerParent"
+        android:layout_marginTop="5dp" />
 
     <ProgressBar
         android:id="@+id/loading"
