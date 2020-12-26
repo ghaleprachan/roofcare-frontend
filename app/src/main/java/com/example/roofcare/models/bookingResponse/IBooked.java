@@ -57,6 +57,9 @@ public class IBooked {
     @SerializedName("vendorAcceptance")
     @Expose
     private Boolean vendorAcceptance;
+    @SerializedName("completedStatus")
+    @Expose
+    private Boolean completedStatus;
 
     public Integer getBookingId() {
         return bookingId;
@@ -194,4 +197,11 @@ public class IBooked {
         this.vendorAcceptance = vendorAcceptance;
     }
 
+    public Boolean getCompletedStatus() {
+        return completedStatus;
+    }
+
+    public void setCompletedStatus(Boolean completedStatus) {
+        this.completedStatus = completedStatus;
+    }
 }

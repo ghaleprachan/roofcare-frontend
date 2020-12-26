@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roofcare.R;
+import com.example.roofcare.activities.bookingHistory.BookingHistoryActivity;
 import com.example.roofcare.activities.bookingRequest.BookingRequestItemActivity;
 import com.example.roofcare.activities.bookings.BookedItemsActivity;
 import com.example.roofcare.activities.logIn.LogIn;
@@ -87,6 +88,8 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                 mContext.startActivity(new Intent(mContext, BookingRequestItemActivity.class));
             } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKINGS)) {
                 mContext.startActivity(new Intent(mContext, BookedItemsActivity.class));
+            } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKING_HISTORY)) {
+                mContext.startActivity(new Intent(mContext, BookingHistoryActivity.class));
             }
         });
     }

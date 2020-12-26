@@ -1,6 +1,7 @@
 package com.example.roofcare.activities.bookings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +13,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.roofcare.adapters.bookingAdapter.IBookedAdapter;
+import com.example.roofcare.adapters.bookingAdapter.ImBookedAdapter;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityBookedItemsBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.example.roofcare.models.bookingResponse.BookingResponseModel;
-import com.example.roofcare.services.bookingService.BookingRequestServiceClass;
 import com.example.roofcare.services.bookingService.BookingsServiceClass;
 import com.google.gson.GsonBuilder;
 
@@ -37,7 +39,15 @@ public class BookedItemsActivity extends AppCompatActivity {
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(BookedItemsActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                try {
+                    if (position == 0) {
+                        addToImBooked();
+                    } else {
+                        addToIBooked();
+                    }
+                } catch (Exception ex) {
+                    Log.d("TAG", "onItemSelected: "+ex.getMessage());
+                }
             }
 
             @Override
@@ -58,9 +68,8 @@ public class BookedItemsActivity extends AppCompatActivity {
                         binding.loading.setVisibility(View.GONE);
                         try {
                             BookingResponseModel responseModel = new GsonBuilder().create().fromJson(response, BookingResponseModel.class);
-                            Toast.makeText(this, responseModel.getFullName(), Toast.LENGTH_SHORT).show();
                             if (BookingsServiceClass.addBookingResponse(responseModel)) {
-                                addToRecyclerView();
+                                addToImBooked();
                             }
                         } catch (Exception ex) {
                             Log.d("TAGRequestResException", "bookingRequestApiCall: " + ex.getMessage());
@@ -79,8 +88,14 @@ public class BookedItemsActivity extends AppCompatActivity {
         }
     }
 
-    private void addToRecyclerView() {
+    private void addToImBooked() {
+        binding.bookings.setLayoutManager(new LinearLayoutManager(this));
+        binding.bookings.setAdapter(new ImBookedAdapter(this, BookingsServiceClass.responseModel.getImBooked()));
+    }
 
+    private void addToIBooked() {
+        binding.bookings.setLayoutManager(new LinearLayoutManager(this));
+        binding.bookings.setAdapter(new IBookedAdapter(this, BookingsServiceClass.responseModel.getIBooked()));
     }
 
     private void onBackClick() {

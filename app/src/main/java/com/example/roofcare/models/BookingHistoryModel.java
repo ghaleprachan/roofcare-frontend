@@ -1,29 +1,37 @@
-
-package com.example.roofcare.models.bookingResponse;
+package com.example.roofcare.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ImBooked {
+public class BookingHistoryModel {
 
     @SerializedName("bookingId")
     @Expose
     private Integer bookingId;
+    @SerializedName("bookingById")
+    @Expose
+    private Integer bookingById;
+    @SerializedName("bookingByName")
+    @Expose
+    private String bookingByName;
+    @SerializedName("bookingByUsername")
+    @Expose
+    private String bookingByUsername;
+    @SerializedName("bookingByImage")
+    @Expose
+    private String bookingByImage;
     @SerializedName("bookingToId")
     @Expose
     private Integer bookingToId;
-    @SerializedName("userId")
+    @SerializedName("bookingToUsername")
     @Expose
-    private Integer userId;
-    @SerializedName("username")
+    private String bookingToUsername;
+    @SerializedName("bookingToFullName")
     @Expose
-    private String username;
-    @SerializedName("fullName")
+    private String bookingToFullName;
+    @SerializedName("bookingToUserImage")
     @Expose
-    private String fullName;
-    @SerializedName("userImage")
-    @Expose
-    private String userImage;
+    private String bookingToUserImage;
     @SerializedName("serviceType")
     @Expose
     private String serviceType;
@@ -57,7 +65,6 @@ public class ImBooked {
     @SerializedName("vendorAcceptance")
     @Expose
     private Boolean vendorAcceptance;
-
     @SerializedName("completedStatus")
     @Expose
     private Boolean completedStatus;
@@ -70,6 +77,38 @@ public class ImBooked {
         this.bookingId = bookingId;
     }
 
+    public Integer getBookingById() {
+        return bookingById;
+    }
+
+    public void setBookingById(Integer bookingById) {
+        this.bookingById = bookingById;
+    }
+
+    public String getBookingByName() {
+        return bookingByName;
+    }
+
+    public void setBookingByName(String bookingByName) {
+        this.bookingByName = bookingByName;
+    }
+
+    public String getBookingByUsername() {
+        return bookingByUsername;
+    }
+
+    public void setBookingByUsername(String bookingByUsername) {
+        this.bookingByUsername = bookingByUsername;
+    }
+
+    public String getBookingByImage() {
+        return bookingByImage;
+    }
+
+    public void setBookingByImage(String bookingByImage) {
+        this.bookingByImage = bookingByImage;
+    }
+
     public Integer getBookingToId() {
         return bookingToId;
     }
@@ -78,36 +117,28 @@ public class ImBooked {
         this.bookingToId = bookingToId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getBookingToUsername() {
+        return bookingToUsername;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setBookingToUsername(String bookingToUsername) {
+        this.bookingToUsername = bookingToUsername;
     }
 
-    public String getUsername() {
-        return username;
+    public String getBookingToFullName() {
+        return bookingToFullName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setBookingToFullName(String bookingToFullName) {
+        this.bookingToFullName = bookingToFullName;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getBookingToUserImage() {
+        return bookingToUserImage;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getUserImage() {
-        return userImage;
-    }
-
-    public void setUserImage(String userImage) {
-        this.userImage = userImage;
+    public void setBookingToUserImage(String bookingToUserImage) {
+        this.bookingToUserImage = bookingToUserImage;
     }
 
     public String getServiceType() {
@@ -205,4 +236,5 @@ public class ImBooked {
     public void setCompletedStatus(Boolean completedStatus) {
         this.completedStatus = completedStatus;
     }
+
 }

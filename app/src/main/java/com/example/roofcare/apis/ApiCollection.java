@@ -33,4 +33,8 @@ public class ApiCollection {
     public static String getBookingAndRequests = baseUrl + "api/Booking";
 
     public static String deleteBooking = baseUrl + "api/Booking?bookingId=";
+
+    public static String markBookingCompleted = baseUrl + "api/Booking?bookingId=";
+
+    public static String getBookingHistory = baseUrl + "api/Booking/GetBookingHistory?userId=";
 }

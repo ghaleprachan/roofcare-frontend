@@ -28,9 +28,6 @@
             android:parentActivityName=".activities.dashboard.Dashboard" />
         <activity android:name=".activities.bookingRequest.BookingRequestItemActivity" />
         <activity
-            android:name=".activities.bookings.BookedDescriptionActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
-        <activity
             android:name=".activities.bookings.BookedItemsActivity"
             android:parentActivityName=".activities.dashboard.Dashboard" />
         <activity

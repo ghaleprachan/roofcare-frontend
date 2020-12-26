@@ -51,6 +51,9 @@
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
     <string name="accept_booking">Make Bill</string>
+    <string name="view_bill">View Bill</string>
+    <string name="mark_as_completed">Mark as Completed</string>
+    <string name="close">Close</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>

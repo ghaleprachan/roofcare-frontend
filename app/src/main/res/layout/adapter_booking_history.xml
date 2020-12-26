@@ -76,15 +76,5 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/completed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/viewBill"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_state_ideal_accept"
-            android:text="@string/mark_as_completed"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
