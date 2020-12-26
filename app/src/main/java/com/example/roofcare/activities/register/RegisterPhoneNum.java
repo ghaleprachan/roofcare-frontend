@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Register extends AppCompatActivity {
+public class RegisterPhoneNum extends AppCompatActivity {
     private TextView logIn, roof, care;
     private Button register;
     private TextInputEditText phoneNumber;
@@ -49,7 +49,9 @@ public class Register extends AppCompatActivity {
                 phoneNumber.requestFocus();
                 phoneNumber.setError("Invalid phone number");
             } else {
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, UserTypeActivity.class);
+                intent.putExtra("phone", phoneNumber.getText().toString());
+                startActivity(intent);
             }
         });
     }
@@ -65,8 +67,8 @@ public class Register extends AppCompatActivity {
         logIn.setOnClickListener(v -> {
             Intent sharedIntents = new Intent(this, LogIn.class);
             Pair[] pairs = new Pair[2];
-            pairs[0] = new Pair<View, String>(roof, "textG");
-            pairs[1] = new Pair<View, String>(care, "textNote");
+            pairs[0] = new Pair<View, String>(roof, "roof");
+            pairs[1] = new Pair<View, String>(care, "care");
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pairs);

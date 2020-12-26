@@ -73,6 +73,7 @@
                     android:id="@+id/phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="9852031574"
                     android:drawableStart="@drawable/ic_baseline_phone_24"
                     android:drawableLeft="@drawable/ic_baseline_phone_24"
                     android:drawablePadding="10dp"

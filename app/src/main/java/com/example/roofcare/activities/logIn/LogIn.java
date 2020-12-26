@@ -5,7 +5,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.roofcare.R;
 import com.example.roofcare.activities.dashboard.Dashboard;
-import com.example.roofcare.activities.register.Register;
+import com.example.roofcare.activities.register.RegisterPhoneNum;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
 import com.example.roofcare.apis.ApiCollection;
@@ -40,7 +39,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LogIn extends AppCompatActivity {
-    private TextView register, g, note, erroInput;
+    private TextView register, g, note, errorInput;
     private TextInputEditText userName, password;
     private Button logIn;
     private ProgressBar progressBar;
@@ -76,7 +75,7 @@ public class LogIn extends AppCompatActivity {
 
     private void apiCall() {
         try {
-            erroInput.setVisibility(View.GONE);
+            errorInput.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
             logIn.setEnabled(false);
             JSONObject jsonBody = new JSONObject();
@@ -87,31 +86,31 @@ public class LogIn extends AppCompatActivity {
                     ApiCollection.logInAuthentication,
                     jsonBody,
                     response -> {
-                        erroInput.setVisibility(View.GONE);
+                        errorInput.setVisibility(View.GONE);
                         logIn.setEnabled(true);
                         progressBar.setVisibility(View.GONE);
                         try {
                             Gson gson = new GsonBuilder().create();
                             AuthenticationResponse authenticationResponse = gson.fromJson(String.valueOf(response), AuthenticationResponse.class);
                             if (authenticationResponse.getSuccess()) {
-                                erroInput.setVisibility(View.GONE);
+                                errorInput.setVisibility(View.GONE);
                                 gotToDashboard(authenticationResponse);
                             } else {
-                                erroInput.setVisibility(View.VISIBLE);
-                                YoYo.with(Techniques.Shake).playOn(erroInput);
+                                errorInput.setVisibility(View.VISIBLE);
+                                YoYo.with(Techniques.Shake).playOn(errorInput);
                             }
                         } catch (Exception ex) {
-                            YoYo.with(Techniques.Shake).playOn(erroInput);
-                            erroInput.setVisibility(View.VISIBLE);
-                            erroInput.setText(ex.getMessage());
+                            YoYo.with(Techniques.Shake).playOn(errorInput);
+                            errorInput.setVisibility(View.VISIBLE);
+                            errorInput.setText(ex.getMessage());
                         }
                     },
                     error -> {
                         progressBar.setVisibility(View.GONE);
                         logIn.setEnabled(true);
-                        YoYo.with(Techniques.Shake).playOn(erroInput);
-                        erroInput.setVisibility(View.VISIBLE);
-                        erroInput.setText(error.toString());
+                        YoYo.with(Techniques.Shake).playOn(errorInput);
+                        errorInput.setVisibility(View.VISIBLE);
+                        errorInput.setText(error.toString());
                     }
             );
             RequestQueue requestQueue = Volley.newRequestQueue(LogIn.this);
@@ -140,7 +139,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     private void startRegisterActivity() {
-        Intent sharedIntents = new Intent(this, Register.class);
+        Intent sharedIntents = new Intent(this, RegisterPhoneNum.class);
         Pair[] pairs = new Pair[2];
         pairs[0] = new Pair<View, String>(g, "roof");
         pairs[1] = new Pair<View, String>(note, "care");
@@ -160,7 +159,7 @@ public class LogIn extends AppCompatActivity {
         userName = findViewById(R.id.phoneNumber);
         password = findViewById(R.id.password);
         progressBar = findViewById(R.id.progressBar);
-        erroInput = findViewById(R.id.errorInput);
+        errorInput = findViewById(R.id.errorInput);
     }
 
     @Override

@@ -21,7 +21,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
 import com.example.roofcare.helper.dateParser.DateParser;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
-import com.example.roofcare.models.BookingHistoryModel;
+import com.example.roofcare.models.bookingHistory.BookingHistoryModel;
 
 import java.util.List;
 import java.util.Objects;

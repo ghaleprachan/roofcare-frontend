@@ -3,7 +3,6 @@ package com.example.roofcare.adapters.offersAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -28,7 +26,6 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
-import com.example.roofcare.activities.register.Register;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;

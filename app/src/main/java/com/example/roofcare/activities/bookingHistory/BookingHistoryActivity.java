@@ -11,13 +11,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.R;
 import com.example.roofcare.adapters.bookingHistoryAdapter.BookingHistoryadapter;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityBookingHistoryBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
-import com.example.roofcare.models.BookingHistoryModel;
-import com.example.roofcare.models.offerResponseModel.OfferResponseModel;
+import com.example.roofcare.models.bookingHistory.BookingHistoryModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

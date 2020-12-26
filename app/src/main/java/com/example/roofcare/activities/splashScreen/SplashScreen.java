@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.roofcare.R;
 import com.example.roofcare.activities.dashboard.Dashboard;
-import com.example.roofcare.activities.register.Register;
+import com.example.roofcare.activities.logIn.LogIn;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
 import com.example.roofcare.sshSolve.HttpsTrustManager;
@@ -37,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private void finishSplashScreen() {
         new Handler().postDelayed(() -> {
-            Intent sharedIntents = new Intent(this, Register.class);
+            Intent sharedIntents = new Intent(this, LogIn.class);
             Pair[] pairs = new Pair[2];
             pairs[0] = new Pair<View, String>(roof, "roof");
             pairs[1] = new Pair<View, String>(care, "care");

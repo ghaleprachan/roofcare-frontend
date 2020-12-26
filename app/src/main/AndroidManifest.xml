@@ -15,6 +15,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".activities.register.AddSkillsActivity"></activity>
+        <activity
+            android:name=".activities.register.UsernamePassActivity"
+            android:parentActivityName=".activities.register.BasicDetailsFormActivity"
+            android:singleUser="true" />
+        <activity
+            android:name=".activities.register.BasicDetailsFormActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.register.UserTypeActivity" />
+        <activity
+            android:name=".activities.register.UserTypeActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.register.RegisterPhoneNum" />
         <activity
             android:name=".activities.bookingsForms.BookingAcceptFormActivity"
             android:parentActivityName=".activities.dashboard.Dashboard"
@@ -59,11 +72,13 @@
             android:name=".activities.dashboard.Dashboard"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activities.register.Register"
-            android:launchMode="singleTop" />
+            android:name=".activities.register.RegisterPhoneNum"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.logIn.LogIn" />
         <activity
             android:name=".activities.logIn.LogIn"
-            android:parentActivityName=".activities.register.Register" />
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.register.RegisterPhoneNum" />
         <activity android:name=".activities.splashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

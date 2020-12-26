@@ -54,6 +54,20 @@
     <string name="view_bill">View Bill</string>
     <string name="mark_as_completed">Mark as Completed</string>
     <string name="close">Close</string>
+    <string name="which_best_describe_you">Which best describe you?</string>
+    <string name="customer">Customer</string>
+    <string name="service_users_can">Service users can use different available services.</string>
+    <string name="next">Next</string>
+    <string name="vendor">Vendor</string>
+    <string name="service_giver_are">Vendors are those who are here to work, provide to services to customers.</string>
+    <string name="enter_full_name">Enter full name</string>
+    <string name="enter_dob">Enter birth date</string>
+    <string name="enter_address">Enter address</string>
+    <string name="enter_about_yourself">Enter about yourself</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_you_basic_details">Enter you basic details</string>
+    <string name="prepare_yourself_for_login">Prepare yourself for login</string>
+    <string name="almost_there_add_your_skills">Almost there, add your skills</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>
@@ -62,5 +76,10 @@
     <string-array name="bookings">
         <item>I am Booked</item>
         <item>I Booked</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
     </string-array>
 </resources>

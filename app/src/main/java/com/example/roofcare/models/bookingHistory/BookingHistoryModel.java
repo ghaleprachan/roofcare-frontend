@@ -1,4 +1,4 @@
-package com.example.roofcare.models;
+package com.example.roofcare.models.bookingHistory;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

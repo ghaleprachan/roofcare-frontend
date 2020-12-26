@@ -2,7 +2,7 @@ package com.example.roofcare.apis;
 
 
 public class ApiCollection {
-    public static String baseUrl = "http://ff19694a0857.ngrok.io/";
+    public static String baseUrl = "http://4dfed5513436.ngrok.io/";
 
     public static String logInAuthentication = baseUrl + "api/User/LogInAuthorization";
 
@@ -37,4 +37,6 @@ public class ApiCollection {
     public static String markBookingCompleted = baseUrl + "api/Booking?bookingId=";
 
     public static String getBookingHistory = baseUrl + "api/Booking/GetBookingHistory?userId=";
+
+    public static String registerUser = baseUrl + "api/Register";
 }

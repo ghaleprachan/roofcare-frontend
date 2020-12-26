@@ -8,11 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +20,6 @@ import com.example.roofcare.activities.bookingHistory.BookingHistoryActivity;
 import com.example.roofcare.activities.bookingRequest.BookingRequestItemActivity;
 import com.example.roofcare.activities.bookings.BookedItemsActivity;
 import com.example.roofcare.activities.logIn.LogIn;
-import com.example.roofcare.activities.register.Register;
 import com.example.roofcare.activities.savedOffers.SavedOfferActivity;
 import com.example.roofcare.enumClasses.MoreOptionsId;
 import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
@@ -76,7 +72,7 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.clear();
                     editor.apply();
-                    mContext.startActivity(new Intent(mContext, Register.class));
+                    mContext.startActivity(new Intent(mContext, LogIn.class));
                     ((AppCompatActivity) mContext).finish();
                     dialog.dismiss();
                 });
