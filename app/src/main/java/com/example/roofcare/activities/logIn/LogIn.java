@@ -120,7 +120,7 @@ public class LogIn extends AppCompatActivity {
         }
     }
 
-    private void gotToDashboard(AuthenticationResponse authenticationResponse) {
+    public void gotToDashboard(AuthenticationResponse authenticationResponse) {
         SharedPreferences preferences = getSharedPreferences("LOGIN_DETAILS", 0);
         @SuppressLint("CommitPrefEdits")
         SharedPreferences.Editor editor = preferences.edit();

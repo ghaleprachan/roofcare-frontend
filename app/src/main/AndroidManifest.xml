@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".activities.register.AddSkillsActivity"></activity>
+        <activity android:name=".activities.register.AddProfileImageActivity"/>
+        <activity android:name=".activities.register.AddSkillsActivity" />
         <activity
             android:name=".activities.register.UsernamePassActivity"
             android:parentActivityName=".activities.register.BasicDetailsFormActivity"
@@ -54,16 +56,7 @@
             android:parentActivityName=".activities.userProfile.UserProfile" />
         <activity
             android:name=".activities.userProfile.UserProfile"
-            android:parentActivityName=".activities.dashboard.Dashboard">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
+            android:parentActivityName=".activities.dashboard.Dashboard" />
         <activity
             android:name=".activities.search.SearchActivity"
             android:parentActivityName=".activities.dashboard.Dashboard"

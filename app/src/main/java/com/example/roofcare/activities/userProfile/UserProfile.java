@@ -62,9 +62,12 @@ public class UserProfile extends AppCompatActivity {
         onReviewsClick();
         onBookClick();
         onRefreshClick();
-
-        if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
-            bookUserNow.setVisibility(View.GONE);
+        try {
+            if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
+                bookUserNow.setVisibility(View.GONE);
+            }
+        } catch (Exception ex) {
+            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
         }
         onBookUserNowClick();
     }

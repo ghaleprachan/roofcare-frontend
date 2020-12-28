@@ -2,7 +2,9 @@ package com.example.roofcare.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -12,10 +14,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.activities.logIn.LogIn;
+import com.example.roofcare.activities.dashboard.Dashboard;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityUsernamePassBinding;
 import com.example.roofcare.models.registerModel.RegisterModel;
+import com.example.roofcare.models.registerModel.registerresponse.RegisterResponse;
+import com.example.roofcare.services.registerprofessions.ProfessionsService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
@@ -80,23 +86,28 @@ public class UsernamePassActivity extends AppCompatActivity {
                         binding.registerNow.setEnabled(true);
                         binding.progress.setVisibility(View.GONE);
                         try {
-                            if (response.getString("Success").equals("true")) {
-                                binding.usernameL.setError(null);
-                                if (RegisterModel.getUserType().equalsIgnoreCase("Vendor")) {
-                                    Intent intent = new Intent(this, AddSkillsActivity.class);
-                                    intent.putExtra("UserId", response.getString("UserId"));
-                                    startActivity(intent);
+                            Gson gson = new GsonBuilder().create();
+                            RegisterResponse registerResponse = gson.fromJson(String.valueOf(response), RegisterResponse.class);
+                            if (registerResponse != null) {
+                                if (registerResponse.getSuccess()) {
+                                    gotoDashboard(registerResponse.getUserId());
+                                    if (RegisterModel.getUserType().equalsIgnoreCase("Vendor")) {
+                                        ProfessionsService.addProfessions(registerResponse);
+                                        Intent intent = new Intent(this, AddSkillsActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        startActivity(new Intent(this, AddProfileImageActivity.class));
+                                        finish();
+                                    }
                                 } else {
-                                    startActivity(new Intent(this, LogIn.class));
+                                    binding.username.requestFocus();
+                                    binding.usernameL.setError("Username exists!");
                                 }
-                            } else if (response.getString("Success").equals("false")) {
-                                binding.username.requestFocus();
-                                binding.usernameL.setError("Username exists!");
-                            } else {
-                                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception ex) {
-                            Toast.makeText(this, "Exception In: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+                            binding.username.requestFocus();
+                            binding.usernameL.setError("Username exists!");
                         }
                     },
                     error -> {
@@ -111,6 +122,20 @@ public class UsernamePassActivity extends AppCompatActivity {
         } catch (Exception ex) {
             Toast.makeText(this, "Exception: " + ex, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void gotoDashboard(Integer userId) {
+        SharedPreferences preferences = getSharedPreferences("LOGIN_DETAILS", 0);
+        @SuppressLint("CommitPrefEdits")
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("UserId", userId);
+        editor.putString("Username", binding.username.getText().toString());
+        editor.putString("FullName", RegisterModel.getFullName());
+        editor.putString("UserImage", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
+        editor.putString("UserType", RegisterModel.getUserType());
+        editor.apply();
+        startActivity(new Intent(this, Dashboard.class));
+        finish();
     }
 
     private void onBackClick() {

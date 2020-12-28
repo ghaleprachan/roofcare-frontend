@@ -68,6 +68,11 @@
     <string name="enter_you_basic_details">Enter you basic details</string>
     <string name="prepare_yourself_for_login">Prepare yourself for login</string>
     <string name="almost_there_add_your_skills">Almost there, add your skills</string>
+    <string name="add">Add</string>
+    <string name="done">Done</string>
+    <string name="add_image">Add Image</string>
+    <string name="skip">Skip</string>
+    <string name="save">Save</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>
