@@ -14,17 +14,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.roofcare.R;
+import com.example.roofcare.activities.addpost.AddPostActivity;
 import com.example.roofcare.activities.dashboard.fragments.MoreFragment;
 import com.example.roofcare.activities.dashboard.fragments.OffersFragment;
 import com.example.roofcare.activities.search.SearchActivity;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 public class Dashboard extends AppCompatActivity {
     private Toolbar toolbarHome;
     private BottomNavigationView bottomNavView;
     private Fragment active, moreFragment, notesFragment;
     private FragmentManager fragmentManager;
+    private ExtendedFloatingActionButton addOffer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +39,11 @@ public class Dashboard extends AppCompatActivity {
         placeFragments();
         addFragments();
         onBottomNavViewClick();
+        addOfferClick();
+    }
+
+    private void addOfferClick() {
+        addOffer.setOnClickListener(v -> startActivity(new Intent(this, AddPostActivity.class)));
     }
 
     private void placeFragments() {
@@ -86,5 +94,6 @@ public class Dashboard extends AppCompatActivity {
     private void UiInitialize() {
         toolbarHome = findViewById(R.id.toolbarHome);
         bottomNavView = findViewById(R.id.bottomNavView);
+        addOffer = findViewById(R.id.addOffer);
     }
 }

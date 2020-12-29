@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.util.Base64;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,8 +21,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.roofcare.R;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityAddPostBinding;
+import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.example.roofcare.models.registerModel.RegisterModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -72,6 +75,7 @@ public class AddPostActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK) {
                         assert data != null;
                         Uri selectedImage = data.getData();
+                        binding.offerImage.setVisibility(View.VISIBLE);
                         binding.offerImage.setImageURI(selectedImage);
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -111,7 +115,10 @@ public class AddPostActivity extends AppCompatActivity {
 
     private void apiCall() {
         try {
+            binding.loading.setVisibility(View.VISIBLE);
+            binding.postNow.setVisibility(View.GONE);
             JSONObject object = new JSONObject();
+            object.put("userId", UserBasicDetails.getId(this));
             object.put("offerDescription", binding.offerDesc.getText().toString());
             object.put("validDate", DateFormat.format("yyyy-MM-dd'T'HH:mm:ss", newCalendar));
             object.put("offerImage", bitmapToString(bitmap));
@@ -121,10 +128,18 @@ public class AddPostActivity extends AppCompatActivity {
                     ApiCollection.addOffer,
                     object,
                     response -> {
-
+                        binding.loading.setVisibility(View.GONE);
+                        binding.postNow.setVisibility(View.VISIBLE);
+                        try {
+                            Toast.makeText(this, response.getString("Success"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     },
                     error -> {
-
+                        binding.loading.setVisibility(View.GONE);
+                        binding.postNow.setVisibility(View.VISIBLE);
+                        Toast.makeText(this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
             );
             RequestQueue queue = Volley.newRequestQueue(this);

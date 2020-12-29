@@ -60,6 +60,17 @@
             android:textStyle="bold"
             android:visibility="visible"
             tools:ignore="RelativeOverlap" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:hint="@string/enter_dob"
+            android:hint="Enter valid date"
             android:inputType="text"
             tools:ignore="Autofill,HardcodedText,TextFields" />
     </com.google.android.material.textfield.TextInputLayout>
