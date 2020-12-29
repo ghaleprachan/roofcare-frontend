@@ -16,7 +16,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".activities.register.AddProfileImageActivity"/>
+        <activity android:name=".activities.addpost.AddPostActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.register.AddProfileImageActivity" />
         <activity android:name=".activities.register.AddSkillsActivity" />
         <activity
             android:name=".activities.register.UsernamePassActivity"
