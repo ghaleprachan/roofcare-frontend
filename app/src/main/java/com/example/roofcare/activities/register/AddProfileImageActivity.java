@@ -1,8 +1,6 @@
 package com.example.roofcare.activities.register;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +21,6 @@ import com.example.roofcare.activities.dashboard.Dashboard;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityAddProfileImageBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
-import com.example.roofcare.models.registerModel.RegisterModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +30,6 @@ import java.io.ByteArrayOutputStream;
 public class AddProfileImageActivity extends AppCompatActivity {
     private ActivityAddProfileImageBinding binding;
     private Bitmap bitmap;
-    private byte[] byteArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,12 +123,13 @@ public class AddProfileImageActivity extends AppCompatActivity {
                 case 0:
                 case 1:
                     if (resultCode == RESULT_OK) {
+                        assert data != null;
                         Uri selectedImage = data.getData();
                         binding.profileImage.setImageURI(selectedImage);
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                        byteArray = byteArrayOutputStream.toByteArray();
+                        byte[] byteArray = byteArrayOutputStream.toByteArray();
                     }
                     break;
             }

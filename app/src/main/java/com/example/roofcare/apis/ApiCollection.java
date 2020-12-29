@@ -43,4 +43,6 @@ public class ApiCollection {
     public static String addUserProfession = baseUrl + "api/Register/AddProfession?";
 
     public static String addProfileImage = baseUrl + "api/Register/AddProfileImage";
+
+    public static String addOffer = baseUrl + "api/Offer";
 }

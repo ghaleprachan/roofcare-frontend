@@ -73,6 +73,9 @@
     <string name="add_image">Add Image</string>
     <string name="skip">Skip</string>
     <string name="save">Save</string>
+    <string name="add_post">Add Post</string>
+    <string name="add_description_for_your_offers">Add description for your offers</string>
+    <string name="post">Post</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>
