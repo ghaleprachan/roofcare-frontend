@@ -132,6 +132,7 @@ public class AddPostActivity extends AppCompatActivity {
                         binding.postNow.setVisibility(View.VISIBLE);
                         try {
                             Toast.makeText(this, response.getString("Success"), Toast.LENGTH_SHORT).show();
+                            this.finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
