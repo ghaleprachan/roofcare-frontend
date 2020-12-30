@@ -41,12 +41,13 @@ public class UserProfile extends AppCompatActivity {
     private TextView edit, name, gender, userType, dob, skills, phoneNumber, address, rating, username;
     private Button offers, reviews, bookUserNow;
     private ExpandableTextView expandableTextView;
-    private LinearLayout back;
+    private LinearLayout back, onlyVendorView;
     private ProgressBar progressBar;
     private ScrollView scrollView;
     private ImageView refresh;
     private CardView bookCard;
     private String uName;
+    private CardView aboutCard, cardProfession;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -62,6 +63,15 @@ public class UserProfile extends AppCompatActivity {
         onReviewsClick();
         onBookClick();
         onRefreshClick();
+        if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
+            onlyVendorView.setVisibility(View.GONE);
+            aboutCard.setVisibility(View.GONE);
+            cardProfession.setVisibility(View.GONE);
+        } else {
+            onlyVendorView.setVisibility(View.VISIBLE);
+            aboutCard.setVisibility(View.VISIBLE);
+            cardProfession.setVisibility(View.VISIBLE);
+        }
         try {
             if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
                 bookUserNow.setVisibility(View.GONE);
@@ -154,7 +164,7 @@ public class UserProfile extends AppCompatActivity {
                                 populateData(model);
                             }
                         } catch (Exception ex) {
-                            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Toast: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     },
                     error -> {
@@ -177,10 +187,14 @@ public class UserProfile extends AppCompatActivity {
                 .priority(Priority.HIGH)
                 .dontAnimate()
                 .dontTransform();
-        Glide.with(this)
-                .setDefaultRequestOptions(defaultOptions)
-                .load(model.getUserImage())
-                .into(profileImage);
+        if (model.getUserImage() == null || model.getUserImage().isEmpty()) {
+            profileImage.setImageResource(R.drawable.ic_outline_person_24);
+        } else {
+            Glide.with(this)
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(ApiCollection.baseUrl + model.getUserImage())
+                    .into(profileImage);
+        }
         name.setText(model.getFullName());
         gender.setText(model.getGender());
         userType.setText("Type: " + model.getUserType());
@@ -221,5 +235,8 @@ public class UserProfile extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
         refresh = findViewById(R.id.refresh);
         bookCard = findViewById(R.id.bookCard);
+        onlyVendorView = findViewById(R.id.onlyVendorView);
+        cardProfession = findViewById(R.id.cardProfession);
+        aboutCard = findViewById(R.id.aboutCard);
     }
 }

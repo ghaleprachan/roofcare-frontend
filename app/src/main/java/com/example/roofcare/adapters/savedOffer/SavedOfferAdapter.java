@@ -61,16 +61,23 @@ public class SavedOfferAdapter extends RecyclerView.Adapter<SavedOfferAdapter.My
                 .priority(Priority.HIGH)
                 .dontAnimate()
                 .dontTransform();
+        if (offers.get(position).getOfferImage() == null || offers.get(position).getOfferImage().isEmpty()) {
+            holder.postImage.setVisibility(View.GONE);
+        } else {
+            Glide.with(mContext)
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(offers.get(position).getOfferImage())
+                    .into(holder.postImage);
+        }
+        if (offers.get(position).getOfferUserImage() == null || offers.get(position).getOfferUserImage().isEmpty()) {
+            holder.profileImage.setVisibility(View.GONE);
+        } else {
+            Glide.with(mContext)
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(offers.get(position).getOfferUserImage())
+                    .into(holder.profileImage);
+        }
 
-        Glide.with(mContext)
-                .setDefaultRequestOptions(defaultOptions)
-                .load(offers.get(position).getOfferImage())
-                .into(holder.postImage);
-
-        Glide.with(mContext)
-                .setDefaultRequestOptions(defaultOptions)
-                .load(offers.get(position).getOfferUserImage())
-                .into(holder.profileImage);
         holder.profileName.setText(offers.get(position).getOfferFullName());
         holder.postDate.setText(DateParser.formatDate(offers.get(position).getPostedDate(), "MMM dd 'at' h:ss a"));
         holder.postDescription.setText(offers.get(position).getOfferDescription());

@@ -31,14 +31,15 @@
                 android:paddingTop="10dp"
                 android:paddingRight="15dp"
                 android:paddingBottom="10dp">
-
+                <!--
+                -->
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImage"
                     android:layout_width="@dimen/more_profile_img"
                     android:layout_height="@dimen/more_profile_img"
                     android:background="@drawable/circular_image_bg"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/face" />
+                    android:src="@drawable/ic_outline_person_24" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -82,7 +83,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/button_state_ideal" />

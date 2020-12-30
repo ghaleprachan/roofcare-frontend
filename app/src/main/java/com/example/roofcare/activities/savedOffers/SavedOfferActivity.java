@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,10 +33,14 @@ public class SavedOfferActivity extends AppCompatActivity {
 
     private void savedOfferApiCall() {
         try {
+            binding.progress.setVisibility(View.VISIBLE);
+            binding.recyclerView.setVisibility(View.GONE);
             StringRequest request = new StringRequest(
                     Request.Method.GET,
                     ApiCollection.getSavedOffers + UserBasicDetails.getId(this),
                     response -> {
+                        binding.progress.setVisibility(View.GONE);
+                        binding.recyclerView.setVisibility(View.VISIBLE);
                         try {
                             SavedOfferResponseModel model = new GsonBuilder().create().fromJson(
                                     response, SavedOfferResponseModel.class
@@ -50,6 +55,8 @@ public class SavedOfferActivity extends AppCompatActivity {
                         }
                     },
                     error -> {
+                        binding.progress.setVisibility(View.GONE);
+                        binding.recyclerView.setVisibility(View.VISIBLE);
                         Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
             );

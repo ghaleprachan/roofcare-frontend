@@ -21,6 +21,7 @@ import com.example.roofcare.activities.bookingRequest.BookingRequestItemActivity
 import com.example.roofcare.activities.bookings.BookedItemsActivity;
 import com.example.roofcare.activities.logIn.LogIn;
 import com.example.roofcare.activities.savedOffers.SavedOfferActivity;
+import com.example.roofcare.activities.settings.SettingActivity;
 import com.example.roofcare.enumClasses.MoreOptionsId;
 import com.example.roofcare.models.moreOptionModel.MoreOptionsModel;
 
@@ -86,6 +87,8 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                 mContext.startActivity(new Intent(mContext, BookedItemsActivity.class));
             } else if (moreOptions.get(position).getId().equals(MoreOptionsId.BOOKING_HISTORY)) {
                 mContext.startActivity(new Intent(mContext, BookingHistoryActivity.class));
+            } else if (moreOptions.get(position).getId().equals(MoreOptionsId.SETTINGS)) {
+                mContext.startActivity(new Intent(mContext, SettingActivity.class));
             }
         });
     }

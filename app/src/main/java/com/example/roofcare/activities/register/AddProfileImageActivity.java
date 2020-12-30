@@ -1,6 +1,7 @@
 package com.example.roofcare.activities.register;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import com.example.roofcare.activities.dashboard.Dashboard;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityAddProfileImageBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
+import com.example.roofcare.models.registerModel.ImageUploadResponse;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,20 +70,24 @@ public class AddProfileImageActivity extends AppCompatActivity {
                         binding.loading.setVisibility(View.GONE);
                         binding.saveImage.setEnabled(true);
                         try {
-                            if (response.getString("success").equalsIgnoreCase("true")) {
-                                /*SharedPreferences prefs = this.getSharedPreferences(
+                            ImageUploadResponse uploadResponse = new GsonBuilder().create().fromJson(
+                                    String.valueOf(response), ImageUploadResponse.class
+                            );
+                            if (uploadResponse.getSuccess()) {
+                                SharedPreferences prefs = this.getSharedPreferences(
                                         "LOGIN_DETAILS", 0);
                                 SharedPreferences.Editor editor = prefs.edit();
-                                editor.putString("UserImage", response.getString("image"));
-                                editor.apply();*/
+                                editor.putString("UserImage", ApiCollection.baseUrl +
+                                        uploadResponse.getImageUrl());
+                                editor.apply();
                                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra("EXIT", true);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(this, "Failed to add image", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                             }
-                        } catch (JSONException e) {
+
+                        } catch (Exception e) {
                             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     },
@@ -129,7 +136,6 @@ public class AddProfileImageActivity extends AppCompatActivity {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                        byte[] byteArray = byteArrayOutputStream.toByteArray();
                     }
                     break;
             }

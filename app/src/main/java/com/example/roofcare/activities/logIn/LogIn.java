@@ -127,7 +127,7 @@ public class LogIn extends AppCompatActivity {
         editor.putInt("UserId", authenticationResponse.getUserId());
         editor.putString("Username", authenticationResponse.getUsername());
         editor.putString("FullName", authenticationResponse.getFullName());
-        editor.putString("UserImage", authenticationResponse.getUserImage());
+        editor.putString("UserImage", ApiCollection.baseUrl +authenticationResponse.getUserImage());
         editor.putString("UserType", authenticationResponse.getUserType());
         editor.apply();
         startActivity(new Intent(this, Dashboard.class));

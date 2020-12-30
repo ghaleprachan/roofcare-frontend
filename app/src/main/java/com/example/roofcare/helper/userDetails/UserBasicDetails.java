@@ -13,4 +13,9 @@ public class UserBasicDetails {
         SharedPreferences preferences = mContext.getSharedPreferences("LOGIN_DETAILS", 0);
         return preferences.getInt("UserId", 0);
     }
+
+    public static String getUserType(Context mContext) {
+        SharedPreferences preferences = mContext.getSharedPreferences("LOGIN_DETAILS", 0);
+        return preferences.getString("UserType", null);
+    }
 }

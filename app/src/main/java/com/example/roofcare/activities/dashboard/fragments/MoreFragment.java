@@ -68,10 +68,14 @@ public class MoreFragment extends Fragment {
                 .dontAnimate()
                 .dontTransform();
 
-        Glide.with(requireContext())
-                .setDefaultRequestOptions(defaultOptions)
-                .load(preferences.getString("UserImage", "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"))
-                .into(profileImage);
+        if (preferences.getString("UserImage", null) != null) {
+            Glide.with(requireContext())
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(preferences.getString("UserImage", null))
+                    .into(profileImage);
+        } else {
+            profileImage.setImageResource(R.drawable.ic_baseline_supervised_user_circle_24);
+        }
     }
 
     private void addDataToRecyclerView() {

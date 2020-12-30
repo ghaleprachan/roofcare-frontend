@@ -16,6 +16,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".activities.settings.settingitems.UpdateSkillsActivity"></activity>
+        <activity android:name=".activities.settings.settingitems.ChangePasswordActivity" />
+        <activity android:name=".activities.settings.SettingActivity" />
+        <activity android:name=".activities.settings.settingitems.SwitchAccountActivity" />
         <activity android:name=".activities.addpost.AddPostActivity" />
         <activity android:name=".activities.register.AddProfileImageActivity" />
         <activity android:name=".activities.register.AddSkillsActivity" />

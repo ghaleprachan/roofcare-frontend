@@ -73,16 +73,22 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
                 .priority(Priority.HIGH)
                 .dontAnimate()
                 .dontTransform();
-
-        Glide.with(mContext)
-                .setDefaultRequestOptions(defaultOptions)
-                .load(offers.get(position).getOfferImage())
-                .into(holder.postImage);
-
-        Glide.with(mContext)
-                .setDefaultRequestOptions(defaultOptions)
-                .load(offers.get(position).getAddedByImage())
-                .into(holder.profileImage);
+        if (offers.get(position).getOfferImage() == null || offers.get(position).getOfferImage().isEmpty()) {
+            holder.postImage.setVisibility(View.GONE);
+        } else {
+            Glide.with(mContext)
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(ApiCollection.baseUrl + offers.get(position).getOfferImage())
+                    .into(holder.postImage);
+        }
+        if (offers.get(position).getAddedByImage() == null || offers.get(position).getAddedByImage().isEmpty()) {
+            holder.profileImage.setImageResource(R.drawable.ic_outline_person_24);
+        } else {
+            Glide.with(mContext)
+                    .setDefaultRequestOptions(defaultOptions)
+                    .load(ApiCollection.baseUrl + offers.get(position).getAddedByImage())
+                    .into(holder.profileImage);
+        }
         holder.profileName.setText(offers.get(position).getAddedByName());
         holder.postDate.setText(DateParser.formatDate(offers.get(position).getPostedDate(), "MMM dd 'at' h:ss a"));
         holder.postDescription.setText(offers.get(position).getOfferDescription());

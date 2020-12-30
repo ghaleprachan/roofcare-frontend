@@ -76,6 +76,9 @@
     <string name="add_post">Add Post</string>
     <string name="add_description_for_your_offers">Add description for your offers</string>
     <string name="post">Post</string>
+    <string name="add_skills_here">Add Skills Here</string>
+    <string name="change_password">Change Password</string>
+    <string name="update_skills">Update Skills</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>

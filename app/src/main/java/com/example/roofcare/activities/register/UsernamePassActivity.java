@@ -131,7 +131,7 @@ public class UsernamePassActivity extends AppCompatActivity {
         editor.putInt("UserId", userId);
         editor.putString("Username", binding.username.getText().toString());
         editor.putString("FullName", RegisterModel.getFullName());
-        editor.putString("UserImage", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
+        editor.putString("UserImage", "https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png");
         editor.putString("UserType", RegisterModel.getUserType());
         editor.apply();
         startActivity(new Intent(this, Dashboard.class));

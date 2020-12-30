@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,12 @@ public class Dashboard extends AppCompatActivity {
         addFragments();
         onBottomNavViewClick();
         addOfferClick();
+
+        if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
+            addOffer.setVisibility(View.INVISIBLE);
+        } else {
+            addOffer.setVisibility(View.VISIBLE);
+        }
     }
 
     private void addOfferClick() {

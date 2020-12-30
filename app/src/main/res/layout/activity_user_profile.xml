@@ -108,7 +108,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/circular_image_bg"
-                                android:scaleType="centerCrop" />
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_outline_person_24"/>
 
                             <TextView
                                 android:id="@+id/edit"
@@ -245,6 +246,7 @@
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/aboutCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -303,6 +305,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardProfession"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="5dp"
