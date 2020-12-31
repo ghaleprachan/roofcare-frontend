@@ -15,6 +15,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
+import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
 import com.example.roofcare.models.userrReviews.Review;
 
@@ -51,7 +52,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewVi
 
         Glide.with(mContext)
                 .setDefaultRequestOptions(defaultOptions)
-                .load(reviews.get(position).getByImage())
+                .load(ApiCollection.baseUrl + reviews.get(position).getByImage())
                 .into(holder.profile);
         holder.name.setText(reviews.get(position).getByFullName());
         holder.date.setText(DateParser.formatDate(reviews.get(position).getFeedbackDate(), "MMM dd, yyyy"));

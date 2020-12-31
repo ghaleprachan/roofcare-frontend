@@ -5,41 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.register.BasicDetailsFormActivity">
+    tools:context=".activities.userProfile.EditProfileActivity">
 
     <RelativeLayout
-        android:id="@+id/top_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
 
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_baseline_close_24"
-            app:tint="@color/black"
-            tools:ignore="ContentDescription" />
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:gravity="center"
-            android:text="@string/enter_you_basic_details"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@id/back"
+            android:layout_toRightOf="@id/back"
+            android:text="Update Profile"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RelativeOverlap" />
     </RelativeLayout>
-
-    <View
-        android:id="@+id/shadow_view"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/viewBg" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,6 +54,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circular_image_bg" />
+
+            <TextView
+                android:id="@+id/changeImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:text="@string/change_profile"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fullNameL"
@@ -102,6 +123,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contactL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_contact"
+                    android:inputType="number"
+                    tools:ignore="Autofill,TextFields" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/aboutL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,15 +166,34 @@
                 android:layout_marginEnd="5dp"
                 android:background="@color/black" />
 
-            <Button
-                android:id="@+id/next"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/button_bg"
-                android:text="@string/next"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:layout_marginTop="35dp">
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
+                    android:text="Update Details"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" />
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    tools:ignore="UnusedAttribute" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

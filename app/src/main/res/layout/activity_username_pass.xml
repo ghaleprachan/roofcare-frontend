@@ -85,7 +85,6 @@
                 android:enabled="true">
 
                 <EditText
-                    android:text="admin"
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,7 +106,6 @@
 
                 <EditText
                     android:id="@+id/password"
-                    android:text="as"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_lock_24"
@@ -133,7 +131,6 @@
                     android:drawableStart="@drawable/ic_baseline_lock_24"
                     android:drawableLeft="@drawable/ic_baseline_lock_24"
                     android:drawablePadding="10dp"
-                    android:text="as"
                     android:hint="@string/enter_username"
                     android:inputType="textPassword"
                     tools:ignore="Autofill" />

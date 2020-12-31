@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
 import com.example.roofcare.activities.userProfile.UserProfile;
+import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.models.searchResponseModel.SearchResponseModel;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 .dontTransform();
         Glide.with(mContext)
                 .setDefaultRequestOptions(defaultOptions)
-                .load(searchResults.get(position).getUserImage())
+                .load(ApiCollection.baseUrl + searchResults.get(position).getUserImage())
                 .into(holder.profileImage);
         holder.fullName.setText(searchResults.get(position).getFullName());
         holder.profession.setText(searchResults.get(position).getProfessionName());

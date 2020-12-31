@@ -79,6 +79,8 @@
     <string name="add_skills_here">Add Skills Here</string>
     <string name="change_password">Change Password</string>
     <string name="update_skills">Update Skills</string>
+    <string name="enter_contact">Enter contact</string>
+    <string name="change_profile">Change Profile</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>

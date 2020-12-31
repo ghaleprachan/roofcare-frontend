@@ -57,6 +57,7 @@ public class UserProfile extends AppCompatActivity {
         uiInitial();
         progressBar.setVisibility(View.GONE);
         onBackClick();
+        userRatingCall();
         userProfileApiCall();
         onEditClick();
         onOfferClick();
@@ -80,6 +81,34 @@ public class UserProfile extends AppCompatActivity {
             Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
         }
         onBookUserNowClick();
+    }
+
+    private void userRatingCall() {
+        try {
+            @SuppressLint("SetTextI18n") StringRequest request = new StringRequest(
+                    Request.Method.GET,
+                    ApiCollection.getRatings + UserBasicDetails.getId(this),
+                    response -> {
+                        try {
+                            UpdateResponse updateResponse = new GsonBuilder().create().fromJson(
+                                    response, UpdateResponse.class
+                            );
+                            if (updateResponse.getSuccess()) {
+                                rating.setText("(" + updateResponse.getMessage());
+                            }
+                        } catch (Exception ex) {
+                            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    },
+                    error -> {
+                        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                    }
+            );
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(request);
+        } catch (Exception ex) {
+            Toast.makeText(this, "Exception: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void onBookUserNowClick() {
@@ -131,7 +160,8 @@ public class UserProfile extends AppCompatActivity {
 
     private void onEditClick() {
         edit.setOnClickListener(v -> {
-            Toast.makeText(this, "None", Toast.LENGTH_SHORT).show();
+            //startActivity(new Intent(this, EditProfileActivity.class));
+            startActivityForResult(new Intent(this, EditProfileActivity.class), 0);
         });
     }
 
@@ -161,7 +191,9 @@ public class UserProfile extends AppCompatActivity {
                             Gson gson = new GsonBuilder().create();
                             ProfileResponseModel model = gson.fromJson(response, ProfileResponseModel.class);
                             if (model != null) {
-                                populateData(model);
+                                if (ProfileDetailsDataHolder.addData(model)) {
+                                    populateData(model);
+                                }
                             }
                         } catch (Exception ex) {
                             Toast.makeText(this, "Toast: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -207,11 +239,22 @@ public class UserProfile extends AppCompatActivity {
         phoneNumber.setText(model.getContact());
         address.setText(model.getAddress());
         expandableTextView.setText(model.getAbout());
-        rating.setText("(4.2");
     }
 
     private void onBackClick() {
         back.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 0) {
+            if (data.hasExtra("result")) {
+                if (data.getStringExtra("result").equals("ok")) {
+                    userProfileApiCall();
+                }
+            }
+        }
     }
 
     private void uiInitial() {

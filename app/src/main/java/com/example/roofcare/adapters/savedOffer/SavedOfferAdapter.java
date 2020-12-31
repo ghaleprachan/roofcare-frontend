@@ -66,7 +66,7 @@ public class SavedOfferAdapter extends RecyclerView.Adapter<SavedOfferAdapter.My
         } else {
             Glide.with(mContext)
                     .setDefaultRequestOptions(defaultOptions)
-                    .load(offers.get(position).getOfferImage())
+                    .load(ApiCollection.baseUrl + offers.get(position).getOfferImage())
                     .into(holder.postImage);
         }
         if (offers.get(position).getOfferUserImage() == null || offers.get(position).getOfferUserImage().isEmpty()) {
@@ -74,7 +74,7 @@ public class SavedOfferAdapter extends RecyclerView.Adapter<SavedOfferAdapter.My
         } else {
             Glide.with(mContext)
                     .setDefaultRequestOptions(defaultOptions)
-                    .load(offers.get(position).getOfferUserImage())
+                    .load(ApiCollection.baseUrl + offers.get(position).getOfferUserImage())
                     .into(holder.profileImage);
         }
 
