@@ -99,7 +99,7 @@ public class SavedOfferAdapter extends RecyclerView.Adapter<SavedOfferAdapter.My
                             notifyItemRangeChanged(position, offers.size());
                             Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                         },
-                        error -> Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show()
+                        error -> Toast.makeText(mContext, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show()
                 );
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(request);

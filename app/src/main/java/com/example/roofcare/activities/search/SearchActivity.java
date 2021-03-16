@@ -33,7 +33,6 @@ public class SearchActivity extends AppCompatActivity {
     private EditText searchItem;
     private ImageView clearSearch;
     private RecyclerView recyclerView;
-    private SearchAdapter searchAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +52,7 @@ public class SearchActivity extends AppCompatActivity {
     private void textWatcher() {
         searchItem.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -104,6 +101,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void populateRecyclerView(ArrayList<SearchResponseModel> searchResult) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        SearchAdapter searchAdapter;
         recyclerView.setAdapter(searchAdapter = new SearchAdapter(this, searchResult));
     }
 

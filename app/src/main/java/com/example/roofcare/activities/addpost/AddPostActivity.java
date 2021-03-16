@@ -1,8 +1,5 @@
 package com.example.roofcare.activities.addpost;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,15 +11,16 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.R;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityAddPostBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
-import com.example.roofcare.models.registerModel.RegisterModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;

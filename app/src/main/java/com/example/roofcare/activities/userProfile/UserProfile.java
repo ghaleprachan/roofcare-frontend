@@ -38,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
     private CircleImageView profileImage;
-    private TextView edit, name, gender, userType, dob, skills, phoneNumber, address, rating, username;
+    private TextView edit, name, gender, userType, dob, skills, phoneNumber, address, rating, closeStar, username;
     private Button offers, reviews, bookUserNow;
     private ExpandableTextView expandableTextView;
     private LinearLayout back, onlyVendorView;
@@ -47,6 +47,7 @@ public class UserProfile extends AppCompatActivity {
     private ImageView refresh;
     private CardView bookCard;
     private String uName;
+    private ImageView star;
     private CardView aboutCard, cardProfession;
 
     @SuppressLint("SetTextI18n")
@@ -64,15 +65,24 @@ public class UserProfile extends AppCompatActivity {
         onReviewsClick();
         onBookClick();
         onRefreshClick();
+
         if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
             onlyVendorView.setVisibility(View.GONE);
             aboutCard.setVisibility(View.GONE);
             cardProfession.setVisibility(View.GONE);
+            star.setVisibility(View.GONE);
+            rating.setVisibility(View.GONE);
+            closeStar.setVisibility(View.GONE);
+
+            if (!getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
+                onlyVendorView.setVisibility(View.VISIBLE);
+            }
         } else {
             onlyVendorView.setVisibility(View.VISIBLE);
             aboutCard.setVisibility(View.VISIBLE);
             cardProfession.setVisibility(View.VISIBLE);
         }
+
         try {
             if (getUserNameIntent().equals(UserBasicDetails.getUserName(this))) {
                 bookUserNow.setVisibility(View.GONE);
@@ -100,9 +110,7 @@ public class UserProfile extends AppCompatActivity {
                             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     },
-                    error -> {
-                        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                    }
+                    error -> Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show()
             );
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
@@ -281,5 +289,7 @@ public class UserProfile extends AppCompatActivity {
         onlyVendorView = findViewById(R.id.onlyVendorView);
         cardProfession = findViewById(R.id.cardProfession);
         aboutCard = findViewById(R.id.aboutCard);
+        star = findViewById(R.id.star);
+        closeStar = findViewById(R.id.closeStar);
     }
 }
