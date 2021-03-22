@@ -19,7 +19,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.bookingHistory.BookingHistoryActivity;
 import com.example.roofcare.activities.bookingRequest.BookingRequestItemActivity;
 import com.example.roofcare.activities.bookings.BookedItemsActivity;
-import com.example.roofcare.activities.logIn.LogIn;
+import com.example.roofcare.activities.logIn.LogInActivity;
 import com.example.roofcare.activities.savedOffers.SavedOfferActivity;
 import com.example.roofcare.activities.settings.SettingActivity;
 import com.example.roofcare.enumClasses.MoreOptionsId;
@@ -73,7 +73,7 @@ public class MoreOptionsAdapter extends RecyclerView.Adapter<MoreOptionsAdapter.
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.clear();
                     editor.apply();
-                    mContext.startActivity(new Intent(mContext, LogIn.class));
+                    mContext.startActivity(new Intent(mContext, LogInActivity.class));
                     ((AppCompatActivity) mContext).finish();
                     dialog.dismiss();
                 });

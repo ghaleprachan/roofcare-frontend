@@ -4,19 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.roofcare.R;
-import com.example.roofcare.activities.dashboard.Dashboard;
-import com.example.roofcare.activities.logIn.LogIn;
+import com.example.roofcare.activities.logIn.LogInActivity;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
 import com.example.roofcare.helper.textWatcherValidation.TextWatcherVerify;
@@ -26,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RegisterPhoneNum extends AppCompatActivity {
+public class RegisterPhoneNumActivity extends AppCompatActivity {
     private TextView logIn, roof, care;
     private Button register;
     private TextInputEditText phoneNumber;
@@ -65,7 +61,7 @@ public class RegisterPhoneNum extends AppCompatActivity {
 
     private void onLogInTextClick() {
         logIn.setOnClickListener(v -> {
-            Intent sharedIntents = new Intent(this, LogIn.class);
+            /*Intent sharedIntents = new Intent(this, LogInActivity.class);
             Pair[] pairs = new Pair[2];
             pairs[0] = new Pair<View, String>(roof, "roof");
             pairs[1] = new Pair<View, String>(care, "care");
@@ -73,8 +69,9 @@ public class RegisterPhoneNum extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pairs);
                 startActivity(sharedIntents, options.toBundle());
-                finish();
-            }
+                this.finish();
+            }*/
+            onBackPressed();
         });
     }
 

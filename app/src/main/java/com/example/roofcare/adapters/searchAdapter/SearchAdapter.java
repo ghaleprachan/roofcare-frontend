@@ -17,7 +17,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
-import com.example.roofcare.activities.userProfile.UserProfile;
+import com.example.roofcare.activities.userProfile.UserProfileActivity;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.models.searchResponseModel.SearchResponseModel;
 
@@ -47,6 +47,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
+                .error(R.drawable.ic_outline_person_24)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()
@@ -62,7 +63,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     private void onParentLayoutClick(ConstraintLayout parentLayout, int position) {
         parentLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, UserProfile.class);
+            Intent intent = new Intent(mContext, UserProfileActivity.class);
             intent.putExtra("Id", searchResults.get(position).getUserId());
             intent.putExtra("UserId", searchResults.get(position).getUsername());
             mContext.startActivity(intent);

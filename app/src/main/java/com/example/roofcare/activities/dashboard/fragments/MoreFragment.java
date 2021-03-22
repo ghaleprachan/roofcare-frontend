@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
-import com.example.roofcare.activities.userProfile.UserProfile;
+import com.example.roofcare.activities.userProfile.UserProfileActivity;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.example.roofcare.services.moreOptionService.MoreOptionsService;
 import com.example.roofcare.adapters.moreOptionAdapter.MoreOptionsAdapter;
@@ -54,7 +53,7 @@ public class MoreFragment extends Fragment {
 
     private void onVisitProfileClick() {
         visitProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), UserProfile.class);
+            Intent intent = new Intent(getContext(), UserProfileActivity.class);
             intent.putExtra("UserId", UserBasicDetails.getUserName(requireContext()));
             startActivity(intent);
         });
@@ -65,6 +64,7 @@ public class MoreFragment extends Fragment {
         name.setText(preferences.getString("FullName", "Unknown"));
         RequestOptions defaultOptions = new RequestOptions()
                 .priority(Priority.HIGH)
+                .error(R.drawable.ic_outline_person_24)
                 .dontAnimate()
                 .dontTransform();
 

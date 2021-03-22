@@ -28,11 +28,11 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BookingHistoryadapter extends RecyclerView.Adapter<BookingHistoryadapter.BookingsViewHolder> {
+public class BookingHistoryAdapter extends RecyclerView.Adapter<BookingHistoryAdapter.BookingsViewHolder> {
     private final Context context;
     private final List<BookingHistoryModel> bookingHistory;
 
-    public BookingHistoryadapter(Context context, List<BookingHistoryModel> bookings) {
+    public BookingHistoryAdapter(Context context, List<BookingHistoryModel> bookings) {
         this.context = context;
         this.bookingHistory = bookings;
     }

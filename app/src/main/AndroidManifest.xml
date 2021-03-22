@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".activities.userProfile.EditProfileActivity"></activity>
+        <activity android:name=".activities.userProfile.EditProfileActivity" />
         <activity android:name=".activities.settings.settingitems.UpdateSkillsActivity" />
         <activity android:name=".activities.settings.settingitems.ChangePasswordActivity" />
         <activity android:name=".activities.settings.SettingActivity" />
@@ -26,58 +26,44 @@
         <activity android:name=".activities.register.AddSkillsActivity" />
         <activity
             android:name=".activities.register.UsernamePassActivity"
-            android:parentActivityName=".activities.register.BasicDetailsFormActivity"
             android:singleUser="true" />
         <activity
             android:name=".activities.register.BasicDetailsFormActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.register.UserTypeActivity" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".activities.register.UserTypeActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.register.RegisterPhoneNum" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".activities.bookingsForms.BookingAcceptFormActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".activities.bookingsForms.BookRequestFormActivity"
-            android:parentActivityName=".activities.userProfile.UserProfile"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name=".activities.bookingHistory.BookingHistoryActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
+            android:name=".activities.bookingHistory.BookingHistoryActivity" />
         <activity android:name=".activities.bookingRequest.BookingRequestItemActivity" />
         <activity
-            android:name=".activities.bookings.BookedItemsActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
+            android:name=".activities.bookings.BookedItemsActivity" />
         <activity
-            android:name=".activities.savedOffers.SavedOfferActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
+            android:name=".activities.savedOffers.SavedOfferActivity" />
         <activity
-            android:name=".activities.reviews.UserReviews"
-            android:parentActivityName=".activities.userProfile.UserProfile" />
+            android:name=".activities.reviews.UserReviewsActivity" />
         <activity
-            android:name=".activities.userOffer.UserOffers"
-            android:parentActivityName=".activities.userProfile.UserProfile" />
+            android:name=".activities.userOffer.UserOffers" />
         <activity
-            android:name=".activities.userProfile.UserProfile"
-            android:parentActivityName=".activities.dashboard.Dashboard" />
+            android:name=".activities.userProfile.UserProfileActivity" />
         <activity
             android:name=".activities.search.SearchActivity"
-            android:parentActivityName=".activities.dashboard.Dashboard"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name=".activities.dashboard.Dashboard"
+            android:name=".activities.dashboard.DashboardActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activities.register.RegisterPhoneNum"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.logIn.LogIn" />
+            android:name=".activities.register.RegisterPhoneNumActivity"
+            android:launchMode="singleTop" />
         <activity
-            android:name=".activities.logIn.LogIn"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.register.RegisterPhoneNum" />
+            android:name=".activities.logIn.LogInActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activities.splashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

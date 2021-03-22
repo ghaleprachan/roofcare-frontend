@@ -14,8 +14,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.example.roofcare.R;
-import com.example.roofcare.activities.dashboard.Dashboard;
-import com.example.roofcare.activities.logIn.LogIn;
+import com.example.roofcare.activities.dashboard.DashboardActivity;
+import com.example.roofcare.activities.logIn.LogInActivity;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
 import com.example.roofcare.sshSolve.HttpsTrustManager;
@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private void finishSplashScreen() {
         new Handler().postDelayed(() -> {
-            Intent sharedIntents = new Intent(this, LogIn.class);
+            Intent sharedIntents = new Intent(this, LogInActivity.class);
             Pair[] pairs = new Pair[2];
             pairs[0] = new Pair<View, String>(roof, "roof");
             pairs[1] = new Pair<View, String>(care, "care");
@@ -44,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 SharedPreferences prefs = getSharedPreferences("LOGIN_DETAILS", 0);
                 if (prefs.getString("Username", null) != null) {
-                    startActivity(new Intent(this, Dashboard.class));
+                    startActivity(new Intent(this, DashboardActivity.class));
                     finish();
                 } else {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pairs);

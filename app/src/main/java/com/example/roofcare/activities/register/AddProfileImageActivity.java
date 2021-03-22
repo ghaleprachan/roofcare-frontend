@@ -18,14 +18,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.activities.dashboard.Dashboard;
+import com.example.roofcare.activities.dashboard.DashboardActivity;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityAddProfileImageBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.example.roofcare.models.registerModel.ImageUploadResponse;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -80,9 +79,10 @@ public class AddProfileImageActivity extends AppCompatActivity {
                                 editor.putString("UserImage", ApiCollection.baseUrl +
                                         uploadResponse.getImageUrl());
                                 editor.apply();
-                                Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
+                                this.finish();
                             } else {
                                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                             }
@@ -157,8 +157,8 @@ public class AddProfileImageActivity extends AppCompatActivity {
 
     private void onSkipClick() {
         binding.skip.setOnClickListener(v -> {
-            startActivity(new Intent(this, Dashboard.class));
-            finish();
+            startActivity(new Intent(this, DashboardActivity.class));
+            this.finish();
         });
     }
 }

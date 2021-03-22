@@ -11,7 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.adapters.bookingHistoryAdapter.BookingHistoryadapter;
+import com.example.roofcare.adapters.bookingHistoryAdapter.BookingHistoryAdapter;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityBookingHistoryBinding;
 import com.example.roofcare.helper.userDetails.UserBasicDetails;
@@ -65,7 +65,7 @@ public class BookingHistoryActivity extends AppCompatActivity {
 
     private void setUpRecyclerView(ArrayList<BookingHistoryModel> bookingHistory) {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new BookingHistoryadapter(this, bookingHistory));
+        binding.recyclerView.setAdapter(new BookingHistoryAdapter(this, bookingHistory));
     }
 
     private void onBackClick() {

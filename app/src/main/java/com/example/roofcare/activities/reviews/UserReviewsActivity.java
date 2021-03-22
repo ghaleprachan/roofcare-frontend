@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class UserReviews extends AppCompatActivity {
+public class UserReviewsActivity extends AppCompatActivity {
     private LinearLayout back;
     private ProgressBar loading;
     private RecyclerView reviewsList;

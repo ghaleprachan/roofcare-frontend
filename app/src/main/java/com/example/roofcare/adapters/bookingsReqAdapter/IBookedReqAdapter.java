@@ -42,6 +42,7 @@ public class IBookedReqAdapter extends RecyclerView.Adapter<IBookedReqAdapter.Bo
     public void onBindViewHolder(@NonNull BookingsViewHolder holder, int position) {
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
+                .error(R.drawable.ic_outline_person_24)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()

@@ -23,7 +23,7 @@ import com.example.roofcare.helper.userDetails.UserBasicDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
-public class Dashboard extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
     private Toolbar toolbarHome;
     private BottomNavigationView bottomNavView;
     private Fragment active, moreFragment, notesFragment;
@@ -42,10 +42,15 @@ public class Dashboard extends AppCompatActivity {
         onBottomNavViewClick();
         addOfferClick();
 
-        if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
-            addOffer.setVisibility(View.INVISIBLE);
-        } else {
-            addOffer.setVisibility(View.VISIBLE);
+        try {
+
+            if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
+                addOffer.setVisibility(View.INVISIBLE);
+            } else {
+                addOffer.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

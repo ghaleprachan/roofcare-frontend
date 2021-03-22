@@ -21,8 +21,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.roofcare.R;
-import com.example.roofcare.activities.dashboard.Dashboard;
-import com.example.roofcare.activities.register.RegisterPhoneNum;
+import com.example.roofcare.activities.dashboard.DashboardActivity;
+import com.example.roofcare.activities.register.RegisterPhoneNumActivity;
 import com.example.roofcare.animationsPackage.Techniques;
 import com.example.roofcare.animationsPackage.YoYo;
 import com.example.roofcare.apis.ApiCollection;
@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LogIn extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
     private TextView register, g, note, errorInput;
     private TextInputEditText userName, password;
     private Button logIn;
@@ -113,7 +113,7 @@ public class LogIn extends AppCompatActivity {
                         errorInput.setText(error.toString());
                     }
             );
-            RequestQueue requestQueue = Volley.newRequestQueue(LogIn.this);
+            RequestQueue requestQueue = Volley.newRequestQueue(LogInActivity.this);
             requestQueue.add(request);
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -127,10 +127,10 @@ public class LogIn extends AppCompatActivity {
         editor.putInt("UserId", authenticationResponse.getUserId());
         editor.putString("Username", authenticationResponse.getUsername());
         editor.putString("FullName", authenticationResponse.getFullName());
-        editor.putString("UserImage", ApiCollection.baseUrl +authenticationResponse.getUserImage());
+        editor.putString("UserImage", ApiCollection.baseUrl + authenticationResponse.getUserImage());
         editor.putString("UserType", authenticationResponse.getUserType());
         editor.apply();
-        startActivity(new Intent(this, Dashboard.class));
+        startActivity(new Intent(this, DashboardActivity.class));
         finish();
     }
 
@@ -138,8 +138,9 @@ public class LogIn extends AppCompatActivity {
         register.setOnClickListener(v -> startRegisterActivity());
     }
 
+
     private void startRegisterActivity() {
-        Intent sharedIntents = new Intent(this, RegisterPhoneNum.class);
+        Intent sharedIntents = new Intent(this, RegisterPhoneNumActivity.class);
         Pair[] pairs = new Pair[2];
         pairs[0] = new Pair<View, String>(g, "roof");
         pairs[1] = new Pair<View, String>(note, "care");
@@ -147,7 +148,6 @@ public class LogIn extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pairs);
             startActivity(sharedIntents, options.toBundle());
-            finish();
         }
     }
 
@@ -164,6 +164,6 @@ public class LogIn extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startRegisterActivity();
+        super.onBackPressed();
     }
 }

@@ -24,7 +24,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roofcare.R;
 import com.example.roofcare.activities.bookingsForms.BookRequestFormActivity;
-import com.example.roofcare.activities.reviews.UserReviews;
+import com.example.roofcare.activities.reviews.UserReviewsActivity;
 import com.example.roofcare.activities.userOffer.UserOffers;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
@@ -36,7 +36,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
     private CircleImageView profileImage;
     private TextView edit, name, gender, userType, dob, skills, phoneNumber, address, rating, closeStar, username;
     private Button offers, reviews, bookUserNow;
@@ -104,7 +104,12 @@ public class UserProfile extends AppCompatActivity {
                                     response, UpdateResponse.class
                             );
                             if (updateResponse.getSuccess()) {
-                                rating.setText("(" + updateResponse.getMessage());
+                                if (!updateResponse.getMessage().equals("NaN")) {
+                                    rating.setText("(" + updateResponse.getMessage());
+                                } else {
+                                    star.setVisibility(View.GONE);
+                                    closeStar.setVisibility(View.GONE);
+                                }
                             }
                         } catch (Exception ex) {
                             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -151,7 +156,7 @@ public class UserProfile extends AppCompatActivity {
 
     private void onReviewsClick() {
         reviews.setOnClickListener(v -> {
-            Intent intent = new Intent(this, UserReviews.class);
+            Intent intent = new Intent(this, UserReviewsActivity.class);
             intent.putExtra("Id", getId());
             intent.putExtra("UserId", uName);
             startActivity(intent);
@@ -177,12 +182,12 @@ public class UserProfile extends AppCompatActivity {
         try {
             if (getUserNameIntent() != null) {
                 uName = getUserNameIntent();
-                if (!uName.equals(UserBasicDetails.getUserName(UserProfile.this))) {
+                if (!uName.equals(UserBasicDetails.getUserName(UserProfileActivity.this))) {
                     edit.setVisibility(View.GONE);
                 }
             } else {
                 edit.setVisibility(View.VISIBLE);
-                uName = UserBasicDetails.getUserName(UserProfile.this);
+                uName = UserBasicDetails.getUserName(UserProfileActivity.this);
             }
             username.setText(uName);
             progressBar.setVisibility(View.VISIBLE);

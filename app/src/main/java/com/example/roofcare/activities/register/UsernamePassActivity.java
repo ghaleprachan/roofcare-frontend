@@ -14,7 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.roofcare.activities.dashboard.Dashboard;
+import com.example.roofcare.activities.dashboard.DashboardActivity;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.databinding.ActivityUsernamePassBinding;
 import com.example.roofcare.models.registerModel.RegisterModel;
@@ -134,7 +134,7 @@ public class UsernamePassActivity extends AppCompatActivity {
         editor.putString("UserImage", "https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png");
         editor.putString("UserType", RegisterModel.getUserType());
         editor.apply();
-        startActivity(new Intent(this, Dashboard.class));
+        startActivity(new Intent(this, DashboardActivity.class));
         finish();
     }
 
