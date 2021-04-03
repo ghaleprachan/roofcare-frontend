@@ -2,7 +2,7 @@ package com.example.roofcare.apis;
 
 
 public class ApiCollection {
-    public static String baseUrl = "https://192.168.1.2:45457/";
+    public static String baseUrl = "https://192.168.50.219:45458/";
 
     public static String logInAuthentication = baseUrl + "api/User/LogInAuthorization";
     public static String getALlOffers = baseUrl + "api/offers";
