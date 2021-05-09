@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Home Sewa</string>
-    <string name="roof">Home-</string>
-    <string name="care">Sewa</string>
+    <string name="home">Home-</string>
+    <string name="sewa">Sewa</string>
     <string name="register">Sign Up</string>
     <string name="or">OR</string>
     <string name="have_acc">Already have an account?</string>

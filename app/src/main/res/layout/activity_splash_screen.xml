@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/capriola"
-        android:text="@string/roof"
+        android:text="@string/home"
         android:textColor="@color/colorAccent"
         android:textSize="35sp" />
 
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/capriola"
-        android:text="@string/care"
+        android:text="@string/sewa"
         android:textColor="@color/colorAccent"
         android:textSize="35sp" />
 </LinearLayout>
