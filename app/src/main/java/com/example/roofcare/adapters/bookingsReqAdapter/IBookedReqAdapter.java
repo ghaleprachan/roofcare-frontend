@@ -40,9 +40,11 @@ public class IBookedReqAdapter extends RecyclerView.Adapter<IBookedReqAdapter.Bo
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BookingsViewHolder holder, int position) {
+        IBooked booked = bookings.get(position);
+
         RequestOptions defaultOptions = new RequestOptions()
-                .placeholder(R.drawable.img_loading_anim)
-                .error(R.drawable.ic_outline_person_24)
+                .placeholder(R.drawable.brand_logo)
+                .error(R.drawable.brand_logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()
@@ -53,8 +55,13 @@ public class IBookedReqAdapter extends RecyclerView.Adapter<IBookedReqAdapter.Bo
                 .load(bookings.get(position).getUserImage())
                 .into(holder.profileImage);
         holder.fullName.setText(bookings.get(position).getFullName());
-        holder.serviceDate.setText("Service Date: " + DateParser.formatDate(bookings.get(position).getServiceDate(), "MMM dd, yyyy"));
-        holder.problemDescription.setText(bookings.get(position).getServiceType() + "\n\n" + bookings.get(position).getProblemDescription());
+        holder.serviceDate.setText(DateParser.formatDate(bookings.get(position).getServiceDate(), "MMM dd, yyyy"));
+        holder.problemDescription.setText(bookings.get(position).getProblemDescription());
+
+        holder.address.setText(booked.getCustomerAddress());
+        holder.tvServiceType.setText(booked.getServiceType());
+        holder.tvPhone.setText(booked.getUsername());
+        holder.tvSendOnDate.setText(DateParser.formatDate(bookings.get(position).getBookingDate(), "MMM dd, yyyy"));
     }
 
     @Override
@@ -64,14 +71,18 @@ public class IBookedReqAdapter extends RecyclerView.Adapter<IBookedReqAdapter.Bo
 
     public static class BookingsViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView profileImage;
-        private final TextView fullName, serviceDate, problemDescription;
+        private final TextView fullName, serviceDate, problemDescription, address, tvSendOnDate, tvServiceType, tvPhone;
 
         public BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.otherUserImage);
-            fullName = itemView.findViewById(R.id.otherUserName);
-            serviceDate = itemView.findViewById(R.id.serviceDate);
-            problemDescription = itemView.findViewById(R.id.problemDescription);
+            fullName = itemView.findViewById(R.id.tvName);
+            serviceDate = itemView.findViewById(R.id.tvServiceOnDate);
+            problemDescription = itemView.findViewById(R.id.tvDescription);
+            address = itemView.findViewById(R.id.tvAddress);
+            tvSendOnDate = itemView.findViewById(R.id.tvSendOnDate);
+            tvServiceType = itemView.findViewById(R.id.tvServiceType);
+            tvPhone = itemView.findViewById(R.id.tvPhone);
         }
     }
 }

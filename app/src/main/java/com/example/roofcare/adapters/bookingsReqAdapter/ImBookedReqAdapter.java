@@ -26,6 +26,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.bookingsForms.BookingAcceptFormActivity;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
+import com.example.roofcare.models.bookingResponse.IBooked;
 import com.example.roofcare.models.bookingResponse.ImBooked;
 
 import java.util.List;
@@ -50,8 +51,11 @@ public class ImBookedReqAdapter extends RecyclerView.Adapter<ImBookedReqAdapter.
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BookingsViewHolder holder, int position) {
+        ImBooked booked = bookings.get(position);
+
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
+                .error(R.drawable.brand_logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()
@@ -62,9 +66,13 @@ public class ImBookedReqAdapter extends RecyclerView.Adapter<ImBookedReqAdapter.
                 .load(bookings.get(position).getUserImage())
                 .into(holder.profileImage);
         holder.fullName.setText(bookings.get(position).getFullName());
-        holder.serviceDate.setText("Service Date: " + DateParser.formatDate(bookings.get(position).getServiceDate(), "MMM dd, yyyy") + "\nAt: " +
-                bookings.get(position).getCustomerAddress());
-        holder.problemDescription.setText(bookings.get(position).getServiceType() + "\n\n" + bookings.get(position).getProblemDescription());
+        holder.serviceDate.setText(DateParser.formatDate(bookings.get(position).getServiceDate(), "MMM dd, yyyy"));
+        holder.problemDescription.setText(bookings.get(position).getProblemDescription());
+
+        holder.address.setText(booked.getCustomerAddress());
+        holder.tvServiceType.setText(booked.getServiceType());
+        holder.tvPhone.setText(booked.getUsername());
+        holder.tvSendOnDate.setText(DateParser.formatDate(bookings.get(position).getBookingDate(), "MMM dd, yyyy"));
 
         onDenyClick(holder.deny, holder.accept, position);
         onAcceptClick(holder.accept, position);
@@ -111,17 +119,21 @@ public class ImBookedReqAdapter extends RecyclerView.Adapter<ImBookedReqAdapter.
 
     public static class BookingsViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView profileImage;
-        private final TextView fullName, serviceDate, problemDescription;
+        private final TextView fullName, serviceDate, problemDescription, address, tvSendOnDate, tvServiceType, tvPhone;
         private final Button accept, deny;
 
         public BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.otherUserImage);
-            fullName = itemView.findViewById(R.id.otherUserName);
-            serviceDate = itemView.findViewById(R.id.serviceDate);
-            problemDescription = itemView.findViewById(R.id.problemDescription);
+            fullName = itemView.findViewById(R.id.tvName);
+            serviceDate = itemView.findViewById(R.id.tvServiceOnDate);
+            problemDescription = itemView.findViewById(R.id.tvDescription);
             accept = itemView.findViewById(R.id.acceptRequest);
             deny = itemView.findViewById(R.id.declineRequest);
+            address = itemView.findViewById(R.id.tvAddress);
+            tvSendOnDate = itemView.findViewById(R.id.tvSendOnDate);
+            tvServiceType = itemView.findViewById(R.id.tvServiceType);
+            tvPhone = itemView.findViewById(R.id.tvPhone);
         }
     }
 }

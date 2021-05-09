@@ -43,9 +43,8 @@ public class DashboardActivity extends AppCompatActivity {
         addOfferClick();
 
         try {
-
             if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
-                addOffer.setVisibility(View.INVISIBLE);
+                addOffer.setVisibility(View.VISIBLE);
             } else {
                 addOffer.setVisibility(View.VISIBLE);
             }
@@ -55,7 +54,13 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void addOfferClick() {
-        addOffer.setOnClickListener(v -> startActivity(new Intent(this, AddPostActivity.class)));
+        addOffer.setOnClickListener(v -> {
+            if (UserBasicDetails.getUserType(this).equalsIgnoreCase("Customer")) {
+                Toast.makeText(this, "Switch account to use this feature..", Toast.LENGTH_SHORT).show();
+            } else {
+                startActivity(new Intent(this, AddPostActivity.class));
+            }
+        });
     }
 
     private void placeFragments() {

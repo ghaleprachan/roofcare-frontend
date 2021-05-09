@@ -29,6 +29,7 @@ import com.example.roofcare.R;
 import com.example.roofcare.activities.bookingsForms.BookingAcceptFormActivity;
 import com.example.roofcare.apis.ApiCollection;
 import com.example.roofcare.helper.dateParser.DateParser;
+import com.example.roofcare.models.bookingResponse.IBooked;
 import com.example.roofcare.models.bookingResponse.ImBooked;
 
 import java.util.List;
@@ -54,8 +55,11 @@ public class ImBookedAdapter extends RecyclerView.Adapter<ImBookedAdapter.Bookin
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BookingsViewHolder holder, int position) {
+        ImBooked booked = bookings.get(position);
+
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
+                .error(R.drawable.brand_logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()
@@ -65,13 +69,18 @@ public class ImBookedAdapter extends RecyclerView.Adapter<ImBookedAdapter.Bookin
                 .setDefaultRequestOptions(defaultOptions)
                 .load(bookings.get(position).getUserImage())
                 .into(holder.profile);
+
+        holder.address.setText(booked.getCustomerAddress());
+        holder.tvServiceType.setText(booked.getServiceType());
+        holder.tvPhone.setText(booked.getUsername());
+        holder.tvSendOnDate.setText(DateParser.formatDate(bookings.get(position).getBookingDate(), "MMM dd, yyyy"));
+
         holder.fullName.setText(bookings.get(position).getFullName());
-        holder.serviceDate.setText("Service Date: " + DateParser.formatDate(
+        holder.serviceDate.setText(DateParser.formatDate(
                 bookings.get(position).getServiceDate(), "MMM dd, yyyy"
         ));
-        holder.address.setText("Customer Address: " + bookings.get(position).getCustomerAddress());
-        holder.problemDesc.setText(bookings.get(position).getServiceType() + "\n" +
-                bookings.get(position).getProblemDescription());
+        holder.address.setText(bookings.get(position).getCustomerAddress());
+        holder.problemDesc.setText(bookings.get(position).getProblemDescription());
 
         holder.completedStatus.setVisibility(View.GONE);
         onViewBillClick(holder.viewBill, position);
@@ -107,19 +116,25 @@ public class ImBookedAdapter extends RecyclerView.Adapter<ImBookedAdapter.Bookin
 
     public static class BookingsViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView profile;
-        private final TextView fullName, serviceDate, address, problemDesc;
+        private final TextView fullName, serviceDate, address, problemDesc, tvSendOnDate, tvServiceType, tvPhone, totalPrice;
+        ;
         private final Button viewBill, completedStatus;
 
         public BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = itemView.findViewById(R.id.userImage);
-            fullName = itemView.findViewById(R.id.fullName);
-            serviceDate = itemView.findViewById(R.id.serviceDate);
-            address = itemView.findViewById(R.id.serviceAddress);
-            problemDesc = itemView.findViewById(R.id.problemDescription);
+            profile = itemView.findViewById(R.id.otherUserImage);
+            fullName = itemView.findViewById(R.id.tvName);
+            serviceDate = itemView.findViewById(R.id.tvServiceOnDate);
+            address = itemView.findViewById(R.id.tvAddress);
             viewBill = itemView.findViewById(R.id.viewBill);
             completedStatus = itemView.findViewById(R.id.completed);
+            problemDesc = itemView.findViewById(R.id.tvDescription);
+
+            tvSendOnDate = itemView.findViewById(R.id.tvSendOnDate);
+            tvServiceType = itemView.findViewById(R.id.tvServiceType);
+            tvPhone = itemView.findViewById(R.id.tvPhone);
+            totalPrice = itemView.findViewById(R.id.tvPrice);
         }
     }
 }

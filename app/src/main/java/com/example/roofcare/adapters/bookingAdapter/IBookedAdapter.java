@@ -52,6 +52,8 @@ public class IBookedAdapter extends RecyclerView.Adapter<IBookedAdapter.Bookings
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BookingsViewHolder holder, int position) {
+        IBooked booked = bookings.get(position);
+
         RequestOptions defaultOptions = new RequestOptions()
                 .placeholder(R.drawable.img_loading_anim)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -62,14 +64,19 @@ public class IBookedAdapter extends RecyclerView.Adapter<IBookedAdapter.Bookings
         Glide.with(context)
                 .setDefaultRequestOptions(defaultOptions)
                 .load(bookings.get(position).getUserImage())
+                .error(R.drawable.brand_logo)
                 .into(holder.profile);
+
         holder.fullName.setText(bookings.get(position).getFullName());
-        holder.serviceDate.setText("Service Date: " + DateParser.formatDate(
-                bookings.get(position).getServiceDate(), "MMM dd, yyyy"
-        ));
-        holder.address.setText("Customer Address: " + bookings.get(position).getCustomerAddress());
-        holder.problemDesc.setText(bookings.get(position).getServiceType() + "\n" +
-                bookings.get(position).getProblemDescription());
+        holder.serviceDate.setText(DateParser.formatDate(bookings.get(position).getServiceDate(), "MMM dd, yyyy"));
+        holder.address.setText(bookings.get(position).getCustomerAddress());
+        holder.problemDesc.setText(bookings.get(position).getProblemDescription());
+
+        holder.address.setText(booked.getCustomerAddress());
+        holder.tvServiceType.setText(booked.getServiceType());
+        holder.tvPhone.setText(booked.getUsername());
+        holder.tvSendOnDate.setText(DateParser.formatDate(bookings.get(position).getBookingDate(), "MMM dd, yyyy"));
+        holder.totalPrice.setText("Rs. " + booked.getTotalCharge().toString());
 
         holder.completedStatus.setVisibility(View.VISIBLE);
         onCompletedClick(holder.completedStatus, holder.viewBill, position);
@@ -135,19 +142,25 @@ public class IBookedAdapter extends RecyclerView.Adapter<IBookedAdapter.Bookings
 
     public static class BookingsViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView profile;
-        private final TextView fullName, serviceDate, address, problemDesc;
+        private final TextView fullName, serviceDate, address, problemDesc, tvSendOnDate, tvServiceType, tvPhone, totalPrice;
         private final Button viewBill, completedStatus;
 
         public BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = itemView.findViewById(R.id.userImage);
-            fullName = itemView.findViewById(R.id.fullName);
-            serviceDate = itemView.findViewById(R.id.serviceDate);
-            address = itemView.findViewById(R.id.serviceAddress);
-            problemDesc = itemView.findViewById(R.id.problemDescription);
+            profile = itemView.findViewById(R.id.otherUserImage);
+            fullName = itemView.findViewById(R.id.tvName);
+            serviceDate = itemView.findViewById(R.id.tvServiceOnDate);
+            problemDesc = itemView.findViewById(R.id.tvDescription);
+
             viewBill = itemView.findViewById(R.id.viewBill);
             completedStatus = itemView.findViewById(R.id.completed);
+
+            address = itemView.findViewById(R.id.tvAddress);
+            tvSendOnDate = itemView.findViewById(R.id.tvSendOnDate);
+            tvServiceType = itemView.findViewById(R.id.tvServiceType);
+            tvPhone = itemView.findViewById(R.id.tvPhone);
+            totalPrice = itemView.findViewById(R.id.tvPrice);
         }
     }
 }

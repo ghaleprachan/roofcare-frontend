@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/dp_8_x_10"
     android:background="@color/white"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp"
@@ -12,7 +12,7 @@
     <RelativeLayout
         android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/view_click"
         android:clickable="true"
         android:focusable="true"
@@ -21,6 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center_vertical"
             tools:ignore="UseCompoundDrawables">
 
@@ -29,15 +30,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_bookmark_24"
-                app:tint="@color/black"
+                app:tint="@color/colorPrimary"
                 tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/dp_8_x_3"
+                android:layout_marginRight="@dimen/dp_8_x_3"
                 android:text="Booking"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -52,7 +53,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            app:tint="@color/black"
+            app:tint="@color/colorPrimary"
             tools:ignore="ContentDescription" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

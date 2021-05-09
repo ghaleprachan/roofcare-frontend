@@ -14,7 +14,7 @@
         <!--Profile Icon-->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_8_x_12"
             app:cardCornerRadius="5dp"
             app:cardElevation="3dp"
             app:cardUseCompatPadding="true">
@@ -22,10 +22,11 @@
             <LinearLayout
                 android:id="@+id/visitProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/visit_profile_more_click"
                 android:clickable="true"
                 android:focusable="true"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
@@ -86,7 +87,8 @@
             android:layout_height="0.5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/button_state_ideal" />
+            android:background="@drawable/button_state_ideal"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

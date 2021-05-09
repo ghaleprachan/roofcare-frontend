@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2779AF</color>
-    <color name="colorPrimaryDark">#2874A6</color>
-    <color name="colorAccent">#2874A6</color>
+    <color name="purple_200">#9CEC9F</color>
+    <color name="colorPrimary">#57A55A</color>
+    <color name="colorPrimaryDark">#FF3FA643</color>
+    <color name="colorAccent">#FF3FA643</color>
+    <color name="teal_700">#63CFCE</color>
 
-    <color name="gColor">#21357B</color>
-    <color name="noteColor">#255077</color>
+    <color name="gColor">#FF3FA643</color>
+    <color name="noteColor">#57A55A</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="page_bg">#ffffff</color>
-    <color name="light_blue">#80255077</color>
+    <color name="light_blue">#803FA643</color>
     <color name="closeWhite">#DAD5D5</color>
     <color name="opacityBlue">#1A2874A6</color>
     <color name="viewBg">#BFC1CF</color>
@@ -18,4 +20,16 @@
     <color name="view_active">#BDC2DF</color>
     <color name="view_inactive_bg">#FFFFFF</color><!--1A2874A6-->
     <color name="visit_profile_bg">#402874A6</color>
+
+    <color name="opacity_white">#90ffffff</color>
+    <color name="opacity_black">#99000000</color>
+
+    <color name="green_selected">#334CAF50</color>
+    <color name="green_unselected">#0D4CAF50</color>
+    <color name="shimmer_color">#989697</color>
+
+    <color name="purple_500">#57A55A</color>
+    <color name="purple_700">#FF3FA643</color>
+    <color name="teal_200">#FF3FA643</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>

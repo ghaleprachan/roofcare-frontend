@@ -54,12 +54,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fullNameL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 app:errorEnabled="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,12 +71,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dobL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 app:errorEnabled="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,12 +89,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addressL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 app:errorEnabled="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,15 +106,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/aboutL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 app:errorEnabled="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/about"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/dp_8_x_15"
+                    android:gravity="start"
                     android:hint="@string/enter_about_yourself"
                     tools:ignore="Autofill,TextFields" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,6 +125,7 @@
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/dp_4_x_1"
                 android:entries="@array/gender" />
 
             <View

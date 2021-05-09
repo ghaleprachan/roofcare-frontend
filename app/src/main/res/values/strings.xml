@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Roof Care</string>
-    <string name="roof">Roof-</string>
-    <string name="care">Care</string>
+    <string name="app_name">Home Sewa</string>
+    <string name="roof">Home-</string>
+    <string name="care">Sewa</string>
     <string name="register">Sign Up</string>
     <string name="or">OR</string>
     <string name="have_acc">Already have an account?</string>
@@ -60,10 +60,10 @@
     <string name="next">Next</string>
     <string name="vendor">Vendor</string>
     <string name="service_giver_are">Vendors are those who are here to work, provide to services to customers.</string>
-    <string name="enter_full_name">Enter full name</string>
-    <string name="enter_dob">Enter birth date</string>
-    <string name="enter_address">Enter address</string>
-    <string name="enter_about_yourself">Enter about yourself</string>
+    <string name="enter_full_name">Full name</string>
+    <string name="enter_dob">DOB</string>
+    <string name="enter_address">Address</string>
+    <string name="enter_about_yourself">About yourself</string>
     <string name="enter_username">Enter username</string>
     <string name="enter_you_basic_details">Enter you basic details</string>
     <string name="prepare_yourself_for_login">Prepare yourself for login</string>
@@ -81,6 +81,12 @@
     <string name="update_skills">Update Skills</string>
     <string name="enter_contact">Enter contact</string>
     <string name="change_profile">Change Profile</string>
+    <string name="description">Description</string>
+    <string name="service_date">Service Date</string>
+    <string name="booking_date">Booking Date</string>
+    <string name="total_price">Total Price</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string-array name="booking_requests_list">
         <item>Requests I send </item>
         <item>Requests for me</item>
