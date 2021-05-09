@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".activities.reviews.UserReviews">
+    tools:context=".activities.reviews.UserReviewsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@id/back"
                 android:layout_toRightOf="@id/back"
-                android:text="admin"
+                android:text="Reviews"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText,RelativeOverlap" />

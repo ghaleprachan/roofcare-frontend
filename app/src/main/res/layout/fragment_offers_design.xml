@@ -122,8 +122,9 @@
         <ImageView
             android:id="@+id/postImage"
             android:layout_width="match_parent"
-            android:layout_height="370dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
             android:background="@color/viewBg"
             android:scaleType="fitCenter"
             tools:ignore="ContentDescription" />

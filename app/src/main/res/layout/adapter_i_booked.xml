@@ -4,78 +4,200 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="5dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/requestId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/cl_round_bg"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/tvServiceType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Plumber" />
+
+        <TextView
+            android:id="@+id/tvRequestStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Pending"
+            android:textColor="@android:color/holo_green_dark"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvServiceType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvServiceType"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_8_x_1"
+            android:background="@color/opacity_black"
+            app:layout_constraintTop_toBottomOf="@id/tvServiceType" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/otherUserImage"
-            android:layout_width="@dimen/default_image_size"
-            android:layout_height="60dp"
-            android:src="@drawable/face"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="75dp" />
+            android:layout_width="@dimen/dp_8_x_8"
+            android:layout_height="@dimen/dp_8_x_8"
+            android:layout_marginTop="@dimen/dp_4_x_3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/circular_image_bg"
+            app:layout_constraintStart_toStartOf="@id/viewDivider"
+            app:layout_constraintTop_toBottomOf="@id/viewDivider" />
 
         <TextView
-            android:id="@+id/otherUserName"
-            android:layout_width="0dp"
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sajin Shrestha"
+            android:layout_marginStart="@dimen/dp_8_x_1"
+            android:layout_marginLeft="@dimen/dp_8_x_1"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/small_text"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/serviceDate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintBottom_toTopOf="@id/tvPhone"
+            app:layout_constraintStart_toEndOf="@id/otherUserImage"
             app:layout_constraintTop_toTopOf="@id/otherUserImage"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:ignore="HardcodedText" />
+            tools:text="Bibina Ghale" />
 
         <TextView
-            android:id="@+id/serviceDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Sajin Shrestha"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/otherUserImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline2"
-            app:layout_constraintTop_toBottomOf="@id/otherUserName"
-            tools:ignore="HardcodedText" />
-
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
+            android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="70dp" />
+            app:layout_constraintBottom_toBottomOf="@id/otherUserImage"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="9846356410" />
 
         <TextView
-            android:id="@+id/problemDescription"
-            android:layout_width="match_parent"
+            android:id="@+id/tvProblem"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/large_text"
+            android:layout_marginTop="12dp"
+            android:text="@string/description"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline5" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tvDescription"
+            app:layout_constraintHorizontal_weight="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/otherUserImage" />
 
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/tvProblem"
+            app:layout_constraintTop_toTopOf="@id/tvProblem"
+            tools:text="Problem Description is here" />
+
+        <TextView
+            android:id="@+id/tvAddressLbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8_x_1"
+            android:text="@string/address"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tvProblem"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/tvProblem"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDescription"
+            app:layout_constraintTop_toTopOf="@id/tvAddressLbl"
+            tools:text="Kapan, Kathmandu-Nepal" />
+
+        <TextView
+            android:id="@+id/tvServiceOn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8_x_1"
+            android:text="@string/service_date"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tvProblem"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/tvProblem"
+            app:layout_constraintTop_toBottomOf="@id/tvAddressLbl" />
+
+        <TextView
+            android:id="@+id/tvServiceOnDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDescription"
+            app:layout_constraintTop_toTopOf="@id/tvServiceOn"
+            tools:text="Jan, 21-2022" />
+
+        <TextView
+            android:id="@+id/tvSendOn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8_x_1"
+            android:text="@string/booking_date"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tvProblem"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/tvProblem"
+            app:layout_constraintTop_toBottomOf="@id/tvServiceOn" />
+
+        <TextView
+            android:id="@+id/tvSendOnDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDescription"
+            app:layout_constraintTop_toTopOf="@id/tvSendOn"
+            tools:text="Jan, 21-2022" />
+
+        <TextView
+            android:id="@+id/tvPriceLbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8_x_1"
+            android:text="@string/total_price"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tvProblem"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/tvProblem"
+            app:layout_constraintTop_toBottomOf="@id/tvSendOn" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:textColor="@color/red"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDescription"
+            app:layout_constraintTop_toTopOf="@id/tvPriceLbl" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

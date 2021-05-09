@@ -56,7 +56,7 @@
         <RelativeLayout
             android:id="@+id/switchAccount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_8_x_8"
             android:background="@drawable/view_click"
             android:clickable="true"
             android:focusable="true"
@@ -73,14 +73,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_switch_left_24"
-                    app:tint="@color/black"
+                    app:tint="@color/colorPrimary"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="@dimen/dp_8_x_3"
+                    android:layout_marginRight="@dimen/dp_8_x_3"
                     android:text="Switch Account"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -109,7 +109,7 @@
         <RelativeLayout
             android:id="@+id/changePassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_8_x_9"
             android:background="@drawable/view_click"
             android:clickable="true"
             android:focusable="true"
@@ -117,7 +117,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 tools:ignore="UseCompoundDrawables">
 
@@ -126,15 +126,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_lock_24"
-                    app:tint="@color/black"
+                    app:tint="@color/colorPrimary"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="@dimen/dp_8_x_3"
+                    android:layout_marginRight="@dimen/dp_8_x_3"
                     android:text="Change Password"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -149,7 +149,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                app:tint="@color/black"
+                app:tint="@color/colorPrimary"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -166,7 +166,7 @@
         <RelativeLayout
             android:id="@+id/addSkills"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_8_x_8"
             android:background="@drawable/view_click"
             android:clickable="true"
             android:focusable="true"
@@ -182,14 +182,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_add_circle_outline_24"
-                    app:tint="@color/black"
+                    app:tint="@color/colorPrimary"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="@dimen/dp_8_x_3"
+                    android:layout_marginRight="@dimen/dp_8_x_3"
                     android:text="Update Skills"
                     android:textColor="@color/black"
                     android:textSize="18sp"

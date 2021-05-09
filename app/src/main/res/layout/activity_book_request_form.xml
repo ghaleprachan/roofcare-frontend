@@ -63,59 +63,62 @@
                 android:padding="20dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/serviceType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Type of service you need?*"
+                        android:hint="Service type"
                         tools:ignore="Autofill,HardcodedText,TextFields" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/problemDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Explain you problem in brief?*"
+                        android:layout_height="@dimen/dp_8_x_15"
+                        android:gravity="start"
+                        android:hint="Explain problem"
                         tools:ignore="Autofill,HardcodedText,TextFields" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/customerAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Write down your address?*"
+                        android:hint="Address"
                         tools:ignore="Autofill,HardcodedText,TextFields" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/serviceDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/black"
-                        android:drawableStart="@drawable/ic_baseline_date_range_24"
-                        android:drawableLeft="@drawable/ic_baseline_date_range_24"
                         android:drawablePadding="10dp"
                         android:focusable="false"
-                        android:hint="Select date you want vendor?*"
+                        android:hint="Service Date"
                         tools:ignore="Autofill,HardcodedText,TextFields,UnusedAttribute" />
                 </com.google.android.material.textfield.TextInputLayout>
 

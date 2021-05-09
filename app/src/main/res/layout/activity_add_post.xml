@@ -75,6 +75,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/offerDescriptionL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
@@ -82,15 +83,18 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/offerDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_description_for_your_offers" />
+            android:layout_height="@dimen/dp_8_x_15"
+            android:gravity="start"
+            android:hint="@string/description"
+            android:padding="@dimen/dp_4_x_3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/validDateL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/offerDescriptionL"
@@ -99,7 +103,7 @@
         android:layout_marginEnd="20dp"
         app:errorEnabled="true">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/validDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +119,7 @@
         android:layout_height="300dp"
         android:layout_below="@+id/validDateL"
         android:layout_marginTop="20dp"
-        android:background="@color/view_active"
+        android:background="@color/white"
         android:scaleType="fitCenter"
         android:src="@drawable/face"
         android:visibility="gone"
